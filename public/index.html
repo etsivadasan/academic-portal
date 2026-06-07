@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professor Portal | VAST</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
@@ -23,36 +24,23 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col items-center text-center h-fit">
-                <div class="w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-900 text-3xl font-bold mb-4 border-2 border-indigo-900">
-                    Prof
-                </div>
-                <h2 class="text-2xl font-bold text-gray-900">Your Name Here</h2>
-                <p class="text-indigo-700 font-medium mt-1">Professor, Dept. of Computer Science</p>
+                <div class="w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-900 text-3xl font-bold mb-4 border-2 border-indigo-900">Prof</div>
+                <h2 id="prof-name" class="text-2xl font-bold text-gray-900">Loading...</h2>
+                <p id="prof-title" class="text-indigo-700 font-medium mt-1">Loading...</p>
                 <p class="text-gray-500 text-sm mt-1">Vidya Academy of Science & Technology, Thrissur</p>
                 
                 <div class="w-full border-t border-gray-200 my-4"></div>
                 
                 <div class="text-left w-full space-y-3 text-sm text-gray-600">
-                    <p>📍 <strong>Office:</strong> Main Block, Room 304</p>
-                    <p>📧 <strong>Email:</strong> your.name@vidyaacademy.ac.in</p>
+                    <p>📍 <strong>Office:</strong> <span id="prof-office">Loading...</span></p>
+                    <p>📧 <strong>Email:</strong> <span id="prof-email">Loading...</span></p>
                 </div>
             </div>
 
             <div class="md:col-span-2 space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
                     <h3 class="text-2xl font-bold text-indigo-900 mb-3 border-b border-gray-100 pb-2">Biography</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Welcome to my academic space. I am a dedicated faculty member at Vidya Academy of Science and Technology, committed to fostering innovation, technical skill acquisition, and critical research values in engineering students. My teaching philosophy balances strong foundational theory with rigorous hands-on laboratory exploration.
-                    </p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-2xl font-bold text-indigo-900 mb-3 border-b border-gray-100 pb-2">Research Areas & Interests</h3>
-                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                        <li>Machine Learning & Distributed Artificial Intelligence</li>
-                        <li>Cyber-Physical Systems & IoT Architectures</li>
-                        <li>Data Science Applications in Smart Grid Infrastructures</li>
-                    </ul>
+                    <div id="prof-bio" class="text-gray-700 leading-relaxed space-y-3">Loading biography...</div>
                 </div>
             </div>
 
@@ -63,5 +51,19 @@
         <p>© 2026 Vidya Academy of Science and Technology, Thrissur. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        fetch('/data/homepage.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prof-name').innerText = data.name;
+                document.getElementById('prof-title').innerText = data.title;
+                document.getElementById('prof-office').innerText = data.office;
+                document.getElementById('prof-email').innerText = data.email;
+                document.getElementById('prof-bio').innerHTML = data.biography.replace(/\n/g, '<br>');
+            }).catch(() => {
+                // Fallback text if JSON hasn't been created yet
+                document.getElementById('prof-name').innerText = "Your Name";
+            });
+    </script>
 </body>
 </html>
