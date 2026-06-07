@@ -1,39 +1,67 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- Left Profile Summary Card -->
-    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col items-center text-center">
-        <div class="w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-900 text-4xl font-bold mb-4 border-2 border-indigo-900">
-            Prof
-        </div>
-        <h2 class="text-2xl font-bold text-gray-900">Your Name Here</h2>
-        <p class="text-indigo-700 font-medium mt-1">Professor, Dept. of Computer Science</p>
-        <p class="text-gray-500 text-sm mt-1">Vidya Academy of Science & Technology, Thrissur</p>
-        
-        <div class="w-full border-t border-gray-100 my-4"></div>
-        <div class="text-left w-full space-y-2 text-sm text-gray-600">
-            <p>📍 <strong>Office:</strong> Main Block, Room 304</p>
-            <p>📧 <strong>Email:</strong> your.name@vidyaacademy.ac.in</p>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Portal | VAST</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <!-- Right Detailed Biography & Research Interests -->
-    <div class="md:col-span-2 space-y-6">
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-            <h3 class="text-2xl font-bold text-indigo-900 mb-3">Biography</h3>
-            <p class="text-gray-700 leading-relaxed">
-                Welcome to my academic space. I am a dedicated faculty member at Vidya Academy of Science and Technology, committed to fostering innovation, technical skill acquisition, and critical research values in engineering students. My teaching philosophy balances strong foundational theory with rigorous hands-on laboratory exploration.
-            </p>
+    <nav class="bg-indigo-900 text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-wide">VAST Faculty Portal</a>
+            <div class="space-x-6">
+                <a href="index.html" class="hover:text-indigo-200 transition font-medium">Home & Profile</a>
+                <a href="courses.html" class="hover:text-indigo-200 transition font-medium">Courses</a>
+                <a href="discussions.html" class="hover:text-indigo-200 transition font-medium">Discussion Hub</a>
+            </div>
         </div>
+    </nav>
 
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-            <h3 class="text-2xl font-bold text-indigo-900 mb-3">Research Areas & Interests</h3>
-            <ul class="list-disc pl-5 space-y-2 text-gray-700">
-                <li>Machine Learning & Distributed Artificial Intelligence</li>
-                <li>Cyber-Physical Systems & IoT Architectures</li>
-                <li>Data Science Applications in Smart Grid Infrastructures</li>
-            </ul>
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col items-center text-center h-fit">
+                <div class="w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-900 text-3xl font-bold mb-4 border-2 border-indigo-900">
+                    Prof
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Your Name Here</h2>
+                <p class="text-indigo-700 font-medium mt-1">Professor, Dept. of Computer Science</p>
+                <p class="text-gray-500 text-sm mt-1">Vidya Academy of Science & Technology, Thrissur</p>
+                
+                <div class="w-full border-t border-gray-200 my-4"></div>
+                
+                <div class="text-left w-full space-y-3 text-sm text-gray-600">
+                    <p>📍 <strong>Office:</strong> Main Block, Room 304</p>
+                    <p>📧 <strong>Email:</strong> your.name@vidyaacademy.ac.in</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-bold text-indigo-900 mb-3 border-b border-gray-100 pb-2">Biography</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Welcome to my academic space. I am a dedicated faculty member at Vidya Academy of Science and Technology, committed to fostering innovation, technical skill acquisition, and critical research values in engineering students. My teaching philosophy balances strong foundational theory with rigorous hands-on laboratory exploration.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-bold text-indigo-900 mb-3 border-b border-gray-100 pb-2">Research Areas & Interests</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>Machine Learning & Distributed Artificial Intelligence</li>
+                        <li>Cyber-Physical Systems & IoT Architectures</li>
+                        <li>Data Science Applications in Smart Grid Infrastructures</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
-    </div>
-</div>
-{% endblock %}
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 text-center py-6 border-t border-gray-700 mt-12">
+        <p>© 2026 Vidya Academy of Science and Technology, Thrissur. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
