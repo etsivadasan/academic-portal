@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: etsivadasan/academic-portal
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "homepage"
+    label: "Edit Homepage Content"
+    files:
+      - file: "public/data/homepage.json"
+        label: "Professor Profile Information"
+        name: "profile"
+        fields:
+          - { label: "Your Full Name", name: "name", widget: "string" }
+          - { label: "Academic Designation/Title", name: "title", widget: "string" }
+          - { label: "Office Location/Room Number", name: "office", widget: "string" }
+          - { label: "Institutional Email Address", name: "email", widget: "string" }
+          - { label: "Biography Text (Word Editor)", name: "biography", widget: "markdown" }
