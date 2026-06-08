@@ -1,29 +1,68 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2 class="text-3xl font-bold text-indigo-900 mb-6">Current Semesters & Courses</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Hub | VAST Faculty Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Utility: justified paragraphs */
+        .justified { text-align: justify; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <!-- Course Card 1 -->
-    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-indigo-900">
-        <span class="bg-indigo-100 text-indigo-900 font-bold px-2.5 py-1 rounded text-xs">CS301</span>
-        <h3 class="text-xl font-bold text-gray-900 mt-2">Data Structures and Algorithms</h3>
-        <p class="text-gray-600 mt-2 text-sm">A deep dive into abstract data types, optimization metrics, sorting/searching paradigms, and computational graph logic.</p>
-        <div class="mt-4 flex space-x-3 text-xs text-indigo-700 font-semibold">
-            <span>⏱️ Tue, Thu (10:00 AM)</span>
-            <span>📍 Lab 2 / Seminar Room</span>
+    <nav class="bg-indigo-900 text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-wide">VAST Faculty Portal</a>
+            <div class="space-x-6">
+                <a href="index.html" class="hover:text-indigo-200 transition font-medium">Home & Profile</a>
+                <a href="courses.html" class="hover:text-indigo-200 transition font-medium">Knowledge Hub</a>
+                <a href="discussions.html" class="hover:text-indigo-200 transition font-medium">Discussion Hub</a>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Course Card 2 -->
-    <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-emerald-600">
-        <span class="bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded text-xs">CS402</span>
-        <h3 class="text-xl font-bold text-gray-900 mt-2">Artificial Intelligence Foundations</h3>
-        <p class="text-gray-600 mt-2 text-sm">Exploring heuristic frameworks, probabilistic neural architectures, and adversarial logic models.</p>
-        <div class="mt-4 flex space-x-3 text-xs text-emerald-700 font-semibold">
-            <span>⏱️ Mon, Wed (2:00 PM)</span>
-            <span>📍 Main Auditorium</span>
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold text-indigo-900 mb-6 border-b border-gray-200 pb-2">Knowledge Hub</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 border-l-4 border-indigo-900 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2">Artificial Intelligence Foundations</h3>
+                    <p class="text-gray-600 mt-3 text-sm leading-relaxed justified">
+                        Artificial Intelligence (AI) is a field of computer science dedicated to creating systems capable of performing tasks that typically require human intelligence. These tasks include reasoning, problem-solving, pattern recognition, learning from data, and natural language understanding.
+                    </p>
+                    <p class="text-gray-600 mt-3 text-sm leading-relaxed justified">
+                        At its core, AI operates by processing massive amounts of data to identify statistical relationships. Instead of following rigid, pre-programmed rules for every scenario, modern AI uses algorithms to learn from data and improve its performance over time.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100 space-y-2 text-xs font-medium text-gray-500">
+                    <p class="flex items-center gap-2">⏱️ <span>Tue, Thu (10:00 AM)</span></p>
+                    <p class="flex items-center gap-2">📍 <span>Lab 2 / Seminar Room</span></p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 border-l-4 border-indigo-700 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mt-2">Deep Learning</h3>
+                    <p class="text-gray-600 mt-3 text-sm leading-relaxed justified">
+                        Exploring heuristic frameworks, probabilistic neural architectures, and adversarial logic models.
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-100 space-y-2 text-xs font-medium text-gray-500">
+                    <p class="flex items-center gap-2">⏱️ <span>Mon, Wed (2:00 PM)</span></p>
+                    <p class="flex items-center gap-2">📍 <span>Main Auditorium</span></p>
+                </div>
+            </div>
+
         </div>
-    </div>
+    </main>
 
-</div>
-{% endblock %}
+    <footer class="bg-gray-800 text-gray-400 text-center py-6 border-t border-gray-700 mt-12">
+        <p>© 2026 Vidya Academy of Science and Technology, Thrissur. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
