@@ -101,6 +101,58 @@ def add_comment(post_id):
         
     return redirect(url_for('discussions'))
 
+from flask import jsonify
+
+# API Route to send all discussions out to the webpage
+@app.route('/api/discussions', methods=['GET'])
+def get_discussions():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT * FROM discussions ORDER BY created_at DESC")
+    topics = [dict(row) for row in cursor.fetchall()]
+    
+    for topic in topics:
+        cursor.execute("SELECT * FROM replies WHERE discussion_id = ? ORDER BY created_at ASC", (topic['id'],))
+        topic['replies'] = [dict(row) for row in cursor.fetchall()]
+        
+    conn.close()
+    return jsonify(topics)
+
+# API Route to receive a brand new topic from you
+@app.route('/api/discussions', methods=['POST'])
+def add_topic():
+    data = request.get_json()
+    title = data.get('title')
+    content = data.get('content')
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+    
+    if title and content:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO discussions (title, content, created_at) VALUES (?, ?, ?)", (title, content, current_time))
+        conn.commit()
+        conn.close()
+    return jsonify({"success": True})
+
+# API Route to receive a student reply
+@app.route('/api/replies', methods=['POST'])
+def add_reply():
+    data = request.get_json()
+    topic_id = data.get('discussion_id')
+    author = data.get('author')
+    content = data.get('content')
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+    
+    if author and content and topic_id:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO replies (discussion_id, author, content, created_at) VALUES (?, ?, ?, ?)", (topic_id, author, content, current_time))
+        conn.commit()
+        conn.close()
+    return jsonify({"success": True})
+
 if __name__ == '__main__':
     init_db()
     app.run(debug=True)
