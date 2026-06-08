@@ -4,66 +4,584 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professor Portal | VAST</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Tailwind CSS v4 Browser Compiler -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            900: '#1e1b4b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- FontAwesome for Academic & Portal Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .active-nav-item {
+            border-bottom: 2px solid white;
+            color: #e0e7ff !important;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen transition-colors duration-200">
 
-    <nav class="bg-indigo-900 text-white shadow-md">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-wide">VAST Faculty Portal</a>
-            <div class="space-x-6">
-                <a href="index.html" class="hover:text-indigo-200 transition font-medium">Home & Profile</a>
-                <a href="courses.html" class="hover:text-indigo-200 transition font-medium">Courses</a>
-                <a href="discussions.html" class="hover:text-indigo-200 transition font-medium">Discussion Hub</a>
+    <nav class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <img src="Sivadasan_E_T_3.png" alt="VAST" class="w-8 h-8 rounded-full object-cover border border-white" onerror="this.src='https://placehold.co/40x40/1e1b4b/ffffff?text=VAST'">
+                <a href="index.html" onclick="navigateTo(event, 'home')" class="text-xl font-bold tracking-wide hover:opacity-90 transition">VAST Faculty Portal</a>
+            </div>
+            <div class="flex items-center space-x-6 text-sm">
+                <a href="index.html" id="nav-home" onclick="navigateTo(event, 'home')" class="hover:text-indigo-200 transition font-medium pb-1 active-nav-item">Home & Profile</a>
+                <a href="index.html" id="nav-interests" onclick="navigateTo(event, 'interests')" class="hover:text-indigo-200 transition font-medium pb-1">Areas of Interest</a>
+                <a href="discussions.html" id="nav-discussions" onclick="navigateTo(event, 'discussions')" class="hover:text-indigo-200 transition font-medium pb-1">Discussion Hub</a>
+                <button onclick="toggleAdminMode()" id="admin-toggle-btn" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-3 py-1.5 rounded-lg text-xs flex items-center gap-1.5 shadow-sm transition">
+                    <i class="fa-solid fa-lock-open"></i> Admin Mode
+                </button>
             </div>
         </div>
     </nav>
 
     <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- ================= HOME & PROFILE VIEW ================= -->
+        <div id="view-home" class="view-section grid grid-cols-1 md:grid-cols-3 gap-8">
             
+            <!-- Left Profile Sidebar Card -->
             <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex flex-col items-center text-center h-fit">
-                <div class="w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-900 text-3xl font-bold mb-4 border-2 border-indigo-900">Prof</div>
+                <div class="relative w-44 h-44 sm:w-48 sm:h-48 mb-4 group">
+                    <img 
+                        src="Sivadasan_E_T_3.png" 
+                        alt="Dr. Sivadasan ET" 
+                        class="w-full h-full rounded-full object-cover border-4 border-indigo-900 shadow-lg transition-transform duration-300 hover:scale-[1.02]"
+                        onerror="this.style.display='none'; document.getElementById('avatar-fallback').classList.remove('hidden');"
+                    />
+                    <div id="avatar-fallback" class="hidden w-full h-full bg-indigo-100 rounded-full flex items-center justify-center text-indigo-900 text-3xl font-bold border-4 border-indigo-900 shadow-md">
+                        Prof
+                    </div>
+                    <!-- Image update badge -->
+                    <div class="absolute bottom-2 right-2 bg-indigo-900 text-white p-2 rounded-full text-xs shadow border border-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                </div>
+
                 <h2 id="prof-name" class="text-2xl font-bold text-gray-900">Loading...</h2>
                 <p id="prof-title" class="text-indigo-700 font-medium mt-1">Loading...</p>
                 <p class="text-gray-500 text-sm mt-1">Vidya Academy of Science & Technology, Thrissur</p>
                 
-                <div class="w-full border-t border-gray-200 my-4"></div>
+                <div class="w-full border-t border-gray-100 my-4"></div>
                 
-                <div class="text-left w-full space-y-3 text-sm text-gray-600">
-                    <p>📍 <strong>Office:</strong> <span id="prof-office">Loading...</span></p>
-                    <p>📧 <strong>Email:</strong> <span id="prof-email">Loading...</span></p>
+                <div class="text-left w-full space-y-3.5 text-sm text-gray-600">
+                    <p class="flex items-center gap-2">
+                        <span class="text-indigo-900 w-5"><i class="fa-solid fa-location-dot"></i></span>
+                        <strong>Office:</strong> <span id="prof-office" class="ml-1">Loading...</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span class="text-indigo-900 w-5"><i class="fa-solid fa-envelope"></i></span>
+                        <strong>Email:</strong> <span id="prof-email" class="ml-1 break-all">Loading...</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span class="text-indigo-900 w-5"><i class="fa-solid fa-phone"></i></span>
+                        <strong>Contact:</strong> <span id="prof-phone" class="ml-1">Loading...</span>
+                    </p>
                 </div>
+
+                <div class="w-full border-t border-gray-100 my-4"></div>
+               
             </div>
 
+            <!-- Right Core Profile Panel -->
             <div class="md:col-span-2 space-y-6">
+                <!-- Biography Card -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 relative">
+                    <div class="flex justify-between items-center mb-3 border-b border-gray-100 pb-2">
+                        <h3 class="text-2xl font-bold text-indigo-900">Biography</h3>
+                        <button onclick="editField('biography')" class="admin-edit-btn hidden text-xs text-indigo-600 hover:text-indigo-900 font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-pen"></i> Edit Bio
+                        </button>
+                    </div>
+                    <div id="prof-bio" class="text-gray-700 leading-relaxed space-y-3 text-sm sm:text-base">Loading biography...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= AREAS OF INTEREST VIEW ================= -->
+        <div id="view-interests" class="view-section hidden space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-gray-100 pb-3">
+                    <div>
+                        <h2 class="text-3xl font-bold text-indigo-900">Areas of Interest &amp; Research</h2>
+                        <p class="text-gray-500 text-sm mt-1">Specialized engineering disciplines, research focuses, and core instruction domains.</p>
+                    </div>
+                    <button onclick="addNewInterest()" class="admin-edit-btn hidden bg-indigo-900 hover:bg-indigo-950 text-white font-semibold text-xs px-3.5 py-2 rounded-lg transition shadow-sm">
+                        <i class="fa-solid fa-plus mr-1"></i> Add Area of Interest
+                    </button>
+                </div>
+
+                <!-- Interests Grid -->
+                <div id="interests-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Loaded dynamically from local state -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= DISCUSSION HUB VIEW ================= -->
+        <div id="view-discussions" class="view-section hidden grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Panel: Post new question -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 h-fit">
+                <h3 class="text-xl font-bold text-indigo-900 border-b border-gray-100 pb-3 mb-4 flex items-center gap-2">
+                    <i class="fa-regular fa-comment-dots"></i> Submit Inquiry / Q&A
+                </h3>
+                <form id="discussion-form" onsubmit="postDiscussion(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Your Name</label>
+                        <input type="text" id="disc-author" required class="w-full px-3.5 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-900 focus:border-transparent outline-none transition" placeholder="Student or Guest Name">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Subject context</label>
+                        <select id="disc-course" class="w-full px-3.5 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:ring-2 focus:ring-indigo-900 focus:border-transparent outline-none transition">
+                            <option value="General Academic">General Academic Inquiry</option>
+                            <option value="Deep Learning">Deep Learning &amp; Neural Networks</option>
+                            <option value="AI &amp; Data Science">AI &amp; Data Science</option>
+                            <option value="CUDA Programming">CUDA &amp; GPU Parallelization</option>
+                            <option value="Computer Networks">Computer Networks &amp; WSN</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Message / Question</label>
+                        <textarea id="disc-body" required rows="4" class="w-full px-3.5 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-900 focus:border-transparent outline-none transition resize-none" placeholder="Describe your technical inquiry in detail..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-900 hover:bg-indigo-950 text-white font-bold py-2.5 rounded-lg text-sm shadow transition flex items-center justify-center gap-2">
+                        Post to Hub <i class="fa-regular fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right Panel: Live forums list -->
+            <div class="lg:col-span-2 space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-2xl font-bold text-indigo-900 mb-3 border-b border-gray-100 pb-2">Biography</h3>
-                    <div id="prof-bio" class="text-gray-700 leading-relaxed space-y-3">Loading biography...</div>
+                    <h3 class="text-xl font-bold text-indigo-900 border-b border-gray-100 pb-3 mb-6">
+                        Active Forum Threads
+                    </h3>
+                    
+                    <div id="discussions-list" class="space-y-6">
+                        <!-- Loaded dynamically -->
+                    </div>
                 </div>
             </div>
 
         </div>
+
     </main>
 
-    <footer class="bg-gray-800 text-gray-400 text-center py-6 border-t border-gray-700 mt-12">
+    <!-- Admin Edit Modal Dialog -->
+    <div id="edit-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl border border-gray-200 max-w-lg w-full overflow-hidden animate-in fade-in zoom-in duration-150">
+            <div class="bg-indigo-900 text-white px-6 py-4 flex justify-between items-center">
+                <h4 class="font-bold text-lg" id="modal-title">Edit Profile Information</h4>
+                <button onclick="closeModal()" class="text-white hover:text-indigo-200 transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <input type="hidden" id="edit-field-key">
+                <div class="space-y-1.5">
+                    <label id="modal-label" class="block text-xs font-bold text-gray-400 uppercase tracking-wide">Update Value</label>
+                    <textarea id="edit-field-input" rows="6" class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-900 focus:border-transparent outline-none transition resize-none"></textarea>
+                </div>
+                <div class="flex justify-end gap-3 pt-2">
+                    <button onclick="closeModal()" class="px-4 py-2 border border-gray-200 rounded-lg text-sm font-medium hover:bg-gray-50 transition">Cancel</button>
+                    <button onclick="saveFieldChange()" class="px-5 py-2 bg-indigo-900 hover:bg-indigo-950 text-white rounded-lg text-sm font-bold transition">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-indigo-950 text-gray-400 text-center py-6 border-t border-indigo-900 mt-12 transition-all">
         <p>© 2026 Vidya Academy of Science and Technology, Thrissur. All Rights Reserved.</p>
+        <p class="text-[10px] text-indigo-400 mt-1">Sivadasan ET • Professor Portal v2.0</p>
     </footer>
 
     <script>
-        fetch('/data/homepage.json')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('prof-name').innerText = data.name;
-                document.getElementById('prof-title').innerText = data.title;
-                document.getElementById('prof-office').innerText = data.office;
-                document.getElementById('prof-email').innerText = data.email;
-                document.getElementById('prof-bio').innerHTML = data.biography.replace(/\n/g, '<br>');
-            }).catch(() => {
-                // Fallback text if JSON hasn't been created yet
-                document.getElementById('prof-name').innerText = "Your Name";
+        // Default static profile dataset representing Dr. Sivadasan ET
+        const defaultFacultyData = {
+            name: "Dr. Sivadasan ET",
+            title: "Professor of Computer Science & Engineering",
+            office: "Decennial Block (Room 304), VAST",
+            email: "sivadasan@vidyaacademy.ac.in",
+            phone: "+91 89431 57711",
+            biography: "Welcome to my academic space. I am a dedicated faculty member at Vidya Academy of Science and Technology, committed to fostering innovation, technical skill acquisition, and critical research values in engineering students. My teaching philosophy balances strong foundational theory with rigorous hands-on laboratory exploration."
+        };
+
+        // Areas of Interest list initialization representing Dr. Sivadasan's expertise
+        const defaultInterests = [
+            {
+                id: "interest-1",
+                code: "AI & DEEP LEARNING",
+                title: "Deep Learning & Neural Networks",
+                desc: "Exploring multi-layered neural networks, sequence tracking mechanics with Gated Recurrent Units (GRU), and energy consumption forecasting strategies.",
+                category: "Primary Focus",
+                icon: "fa-brain"
+            },
+            {
+                id: "interest-2",
+                code: "HIGH-PERFORMANCE",
+                title: "CUDA & GPU Parallelization",
+                desc: "Acceleration designs for classification techniques, including CUDA-based runs of Proximal Support Vector Machines applied to healthcare analytics.",
+                category: "Research Area",
+                icon: "fa-microchip"
+            },
+            {
+                id: "interest-3",
+                code: "NETWORKING",
+                title: "Computer Networks & Cisco Protocols",
+                desc: "Over a decade of core instructorship in network architecture routing, routing protocols, and virtual backbone scheduling (VBS) schemes.",
+                category: "Teaching Focus",
+                icon: "fa-network-wired"
+            },
+            {
+                id: "interest-4",
+                code: "DATA SCIENCE",
+                title: "Artificial Intelligence & Python ML",
+                desc: "Practical dataset wrangling with NumPy and Pandas alongside regression analytics models for institutional and industrial purposes.",
+                category: "Academic Domain",
+                icon: "fa-chart-line"
+            }
+        ];
+
+        // Discussion board initialization
+        const defaultDiscussions = [
+            {
+                id: "disc-1",
+                author: "Rohit Krishnan (S8 CSE)",
+                course: "Deep Learning",
+                body: "Sir, what are the primary computational bottlenecks encountered when using Gated Recurrent Units (GRUs) compared to classic LSTMs in complex energy forecasting?",
+                date: "June 05, 2026",
+                replies: [
+                    {
+                        author: "Dr. Sivadasan ET",
+                        role: "Faculty",
+                        body: "Excellent question, Rohit. While LSTMs maintain separate cell states and hidden states requiring more parameter weights, GRUs optimize computational requirements by consolidating these elements. The main bottleneck for both is sequence sequentiality which limits parallelization on modern GPU architectures. However, our CUDA-based runs consistently demonstrate GRUs train 15-20% faster on large energy datasets."
+                    }
+                ]
+            },
+            {
+                id: "disc-2",
+                author: "Amrutha Nair (S6 CSE)",
+                course: "CUDA Programming",
+                body: "How do we initialize shared GPU memories properly inside Python frameworks like PyTorch, or is a pure C/C++ compiler approach strictly required?",
+                date: "May 28, 2026",
+                replies: [
+                    {
+                        author: "Dr. Sivadasan ET",
+                        role: "Faculty",
+                        body: "Hello Amrutha. While high-level libraries manage GPU compilation automatically, custom CUDA kernels with precise shared memory parameters are best written in C++ and linked using PyTorch's C++ extensions or Numba's @cuda.jit decorators."
+                    }
+                ]
+            }
+        ];
+
+        // Initializing client databases inside localStorage
+        if (!localStorage.getItem('vast_faculty_data')) {
+            localStorage.setItem('vast_faculty_data', JSON.stringify(defaultFacultyData));
+        } else {
+            // Self-healing check: Update biography to the new requested one if it's still using the old template bio
+            try {
+                const existingData = JSON.parse(localStorage.getItem('vast_faculty_data'));
+                if (existingData.biography && (existingData.biography.includes("Dedicated academician") || existingData.biography.includes("Loading biography"))) {
+                    existingData.biography = defaultFacultyData.biography;
+                    localStorage.setItem('vast_faculty_data', JSON.stringify(existingData));
+                }
+            } catch(e) {
+                localStorage.setItem('vast_faculty_data', JSON.stringify(defaultFacultyData));
+            }
+        }
+        if (!localStorage.getItem('vast_interests')) {
+            localStorage.setItem('vast_interests', JSON.stringify(defaultInterests));
+        }
+        if (!localStorage.getItem('vast_discussions')) {
+            localStorage.setItem('vast_discussions', JSON.stringify(defaultDiscussions));
+        }
+
+        // Intercepting native Fetch API calls to target "/data/homepage.json" seamlessly
+        const originalFetch = window.fetch;
+        window.fetch = function(url, options) {
+            if (url === '/data/homepage.json') {
+                const storedData = localStorage.getItem('vast_faculty_data');
+                return Promise.resolve(new Response(storedData, {
+                    status: 200,
+                    headers: { 'Content-Type': 'application/json' }
+                }));
+            }
+            return originalFetch(url, options);
+        };
+
+        // Multi-tab Client Router implementation
+        function navigateTo(event, viewId) {
+            if (event) event.preventDefault();
+
+            // Toggle active visible view blocks
+            document.querySelectorAll('.view-section').forEach(section => {
+                section.classList.add('hidden');
             });
+            document.getElementById(`view-${viewId}`).classList.remove('hidden');
+
+            // Set active classes on the header links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active-nav-item');
+            });
+            document.getElementById(`nav-${viewId}`).classList.add('active-nav-item');
+
+            // Re-render corresponding views
+            if (viewId === 'interests') renderInterests();
+            if (viewId === 'discussions') renderDiscussions();
+        }
+
+        // Standard Fetch cycle that matches your template directly
+        function fetchProfileDetails() {
+            fetch('/data/homepage.json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('prof-name').innerText = data.name;
+                    document.getElementById('prof-title').innerText = data.title;
+                    document.getElementById('prof-office').innerText = data.office;
+                    document.getElementById('prof-email').innerText = data.email;
+                    document.getElementById('prof-phone').innerText = data.phone || "+91 89431 57711";
+                    document.getElementById('prof-bio').innerHTML = data.biography.replace(/\n/g, '<br>');
+                }).catch(() => {
+                    // Fail-safe default backup data
+                    document.getElementById('prof-name').innerText = "Dr. Sivadasan ET";
+                    document.getElementById('prof-title').innerText = "Professor of Computer Science";
+                });
+        }
+
+        // Render Academic Areas of Interest list
+        function renderInterests() {
+            const container = document.getElementById('interests-grid');
+            const interests = JSON.parse(localStorage.getItem('vast_interests')) || defaultInterests;
+            container.innerHTML = '';
+
+            interests.forEach(item => {
+                container.innerHTML += `
+                    <div class="p-5 border border-gray-100 rounded-xl hover:shadow-md transition bg-slate-50 relative group flex flex-col justify-between h-full">
+                        <div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full uppercase tracking-wider">${item.code}</span>
+                                <i class="fa-solid ${item.icon || 'fa-graduation-cap'} text-indigo-900/40 text-lg"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 text-base mt-3 group-hover:text-indigo-900 transition">${item.title}</h4>
+                            <p class="text-xs text-gray-600 mt-2 leading-relaxed">${item.desc}</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-gray-200/50 flex items-center justify-between">
+                            <span class="text-[10px] font-semibold text-gray-400 uppercase tracking-widest"><i class="fa-solid fa-tags mr-1"></i> ${item.category}</span>
+                            <button onclick="deleteInterest('${item.id}')" class="admin-edit-btn hidden text-red-500 hover:text-red-700 p-1.5 rounded-lg hover:bg-red-50 transition">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            updateAdminButtonVisibility();
+        }
+
+        // Render Forum Threads list
+        function renderDiscussions() {
+            const container = document.getElementById('discussions-list');
+            const discussions = JSON.parse(localStorage.getItem('vast_discussions'));
+            container.innerHTML = '';
+
+            discussions.forEach((disc, index) => {
+                let repliesHtml = '';
+                disc.replies.forEach(reply => {
+                    repliesHtml += `
+                        <div class="mt-4 pl-4 border-l-2 border-indigo-900 bg-indigo-50/50 p-3.5 rounded-r-xl">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-xs text-indigo-950">${reply.author}</span>
+                                <span class="text-[9px] font-bold text-white bg-green-700 px-1.5 py-0.5 rounded-md">FACULTY</span>
+                            </div>
+                            <p class="text-xs text-gray-700 mt-1.5 leading-relaxed">${reply.body}</p>
+                        </div>
+                    `;
+                });
+
+                // Add quick professor reply action if no replies exist yet, or to let users interact
+                const replyActionHtml = `
+                    <div class="mt-4 flex gap-2">
+                        <input type="text" id="reply-input-${disc.id}" placeholder="Type reply as Professor..." class="flex-grow px-3 py-1.5 border border-gray-200 rounded-lg text-xs outline-none focus:ring-1 focus:ring-indigo-900">
+                        <button onclick="submitReply('${disc.id}')" class="bg-indigo-900 hover:bg-indigo-950 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition shrink-0">
+                            Reply
+                        </button>
+                    </div>
+                `;
+
+                container.innerHTML += `
+                    <div class="p-5 border border-gray-100 rounded-xl bg-white shadow-sm hover:shadow-md transition">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] font-bold text-indigo-900 bg-indigo-50 px-2 py-0.5 rounded-md">${disc.course}</span>
+                                <h4 class="font-bold text-gray-900 text-sm mt-1">Asked by ${disc.author}</h4>
+                            </div>
+                            <span class="text-[10px] text-gray-400 font-medium">${disc.date}</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-3 bg-slate-50 p-3 rounded-lg border border-slate-100 italic">"${disc.body}"</p>
+                        
+                        <div class="space-y-2 mt-4">
+                            ${repliesHtml}
+                        </div>
+                        
+                        ${replyActionHtml}
+                    </div>
+                `;
+            });
+        }
+
+        // Post a new Discussion question
+        function postDiscussion(event) {
+            event.preventDefault();
+            const author = document.getElementById('disc-author').value;
+            const course = document.getElementById('disc-course').value;
+            const body = document.getElementById('disc-body').value;
+
+            const discussions = JSON.parse(localStorage.getItem('vast_discussions'));
+            const newDisc = {
+                id: `disc-${Date.now()}`,
+                author: author,
+                course: course,
+                body: body,
+                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                replies: []
+            };
+
+            discussions.unshift(newDisc);
+            localStorage.setItem('vast_discussions', JSON.stringify(discussions));
+            
+            // Reset form and render
+            document.getElementById('discussion-form').reset();
+            renderDiscussions();
+        }
+
+        // Submit a reply from Faculty perspective
+        function submitReply(discId) {
+            const inputField = document.getElementById(`reply-input-${discId}`);
+            const replyText = inputField.value.trim();
+            if (!replyText) return;
+
+            const discussions = JSON.parse(localStorage.getItem('vast_discussions'));
+            const targetDisc = discussions.find(d => d.id === discId);
+            
+            if (targetDisc) {
+                targetDisc.replies.push({
+                    author: "Dr. Sivadasan ET",
+                    role: "Faculty",
+                    body: replyText
+                });
+                localStorage.setItem('vast_discussions', JSON.stringify(discussions));
+                renderDiscussions();
+            }
+        }
+
+        // Edit profile values (Simulating Admin Dashboard)
+        let isAdminActive = false;
+
+        function toggleAdminMode() {
+            isAdminActive = !isAdminActive;
+            const btn = document.getElementById('admin-toggle-btn');
+            
+            if (isAdminActive) {
+                btn.className = "bg-green-700 hover:bg-green-800 text-white font-semibold px-3 py-1.5 rounded-lg text-xs flex items-center gap-1.5 shadow-sm transition";
+                btn.innerHTML = `<i class="fa-solid fa-lock text-xs"></i> Save & Lock`;
+            } else {
+                btn.className = "bg-amber-600 hover:bg-amber-700 text-white font-semibold px-3 py-1.5 rounded-lg text-xs flex items-center gap-1.5 shadow-sm transition";
+                btn.innerHTML = `<i class="fa-solid fa-lock-open text-xs"></i> Admin Mode`;
+            }
+            updateAdminButtonVisibility();
+        }
+
+        function updateAdminButtonVisibility() {
+            document.querySelectorAll('.admin-edit-btn').forEach(btn => {
+                if (isAdminActive) {
+                    btn.classList.remove('hidden');
+                } else {
+                    btn.classList.add('hidden');
+                }
+            });
+        }
+
+        // Edit Modal utilities
+        function editField(key) {
+            const data = JSON.parse(localStorage.getItem('vast_faculty_data'));
+            document.getElementById('edit-field-key').value = key;
+            document.getElementById('modal-title').textContent = `Edit Profile ${key.toUpperCase()}`;
+            document.getElementById('edit-field-input').value = data[key];
+            document.getElementById('edit-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('edit-modal').classList.add('hidden');
+        }
+
+        function saveFieldChange() {
+            const key = document.getElementById('edit-field-key').value;
+            const updatedVal = document.getElementById('edit-field-input').value;
+            
+            const data = JSON.parse(localStorage.getItem('vast_faculty_data'));
+            data[key] = updatedVal;
+            
+            localStorage.setItem('vast_faculty_data', JSON.stringify(data));
+            closeModal();
+            fetchProfileDetails();
+        }
+
+        // Add New Area of Interest simulated item
+        function addNewInterest() {
+            const interests = JSON.parse(localStorage.getItem('vast_interests')) || [];
+            const codes = ["REINFORCEMENT", "SIGNAL PROC", "DISTRIBUTED"];
+            const titles = ["Heuristic Reinforcement Systems", "Sensor Signal Localization", "Decentralized Accountability"];
+            const descs = [
+                "Investigating actor-critic strategies, scheduling optimization heuristics, and learning policy calibrations in multi-agent environments.",
+                "Designing localization processes using mobile anchor coordinates in complex architectural node networks.",
+                "Securing accountability systems inside distributed cloud systems leveraging combined log file paradigms."
+            ];
+            const categories = ["Emerging Study", "Industrial Project", "Specialized Study"];
+            const icons = ["fa-gamepad", "fa-satellite-dish", "fa-shield-halved"];
+            const randIndex = Math.floor(Math.random() * codes.length);
+
+            const newInterest = {
+                id: `interest-${Date.now()}`,
+                code: codes[randIndex],
+                title: titles[randIndex],
+                desc: descs[randIndex],
+                category: categories[randIndex],
+                icon: icons[randIndex]
+            };
+
+            interests.push(newInterest);
+            localStorage.setItem('vast_interests', JSON.stringify(interests));
+            renderInterests();
+        }
+
+        // Delete Interest item
+        function deleteInterest(interestId) {
+            let interests = JSON.parse(localStorage.getItem('vast_interests')) || [];
+            interests = interests.filter(i => i.id !== interestId);
+            localStorage.setItem('vast_interests', JSON.stringify(interests));
+            renderInterests();
+        }
+
+        // Initial launch loading triggers
+        window.onload = function() {
+            fetchProfileDetails();
+        };
     </script>
 </body>
 </html>
