@@ -158,3 +158,15 @@ if __name__ == '__main__':
     # Tell Flask to listen on port 10000 (Render default) and open to the internet (0.0.0.0)
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
+
+    from flask import send_from_directory
+
+# This tells Flask to serve your files from the 'public' folder
+@app.route('/<path:path>')
+def serve_public(path):
+    return send_from_directory('public', path)
+
+# This makes sure that going to your homepage redirects to your discussions page
+@app.route('/')
+def home():
+    return send_from_directory('public', 'discussions.html')
