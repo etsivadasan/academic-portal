@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Hub | VAST Faculty Portal</title>
-    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght=600;700&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap');
@@ -21,104 +20,111 @@
 </head>
 <body class="text-slate-900 flex flex-col min-h-screen antialiased">
 
-    <!-- Top Institutional Bar -->
-    <div class="bg-[#0b132b] text-[#e0e1dd] text-[11px] font-semibold tracking-widest uppercase py-1.5 px-6 border-b border-[#1c2541]">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <div class="bg-[#0b132b] text-[#e0e1dd] text-[12px] font-semibold tracking-widest uppercase py-2 px-6 border-b border-[#1c2541]">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
             <span>Vidya Academy of Science & Technology</span>
             <span class="text-amber-500 font-medium">Faculty Portfolio</span>
         </div>
     </div>
 
-    <!-- Navigation Header -->
-    <!-- Navigation Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
         <div class="max-w-7xl mx-auto px-6 py-2.5 flex justify-between items-center">
-            <a href="https://prof-sivadasan-portal.etsivadasan.workers.dev/index.html" class="flex items-center space-x-2.5">
+            <a href="index.html" class="flex items-center space-x-2.5">
                 <div class="h-5 w-1 bg-[#0b132b] rounded-full"></div>
                 <span class="serif-heading text-lg font-bold tracking-wide text-[#0b132b]">
                     Dr. Sivadasan Portal
                 </span>
             </a>
             <nav class="flex space-x-6 text-xs font-bold tracking-wide uppercase">
-                <a href="https://prof-sivadasan-portal.etsivadasan.workers.dev/index.html" class="text-[#0b132b] border-b-2 border-[#0b132b] pb-0.5">Home</a>
-                <a href="https://prof-sivadasan-portal.etsivadasan.workers.dev/courses.html" class="text-slate-500 hover:text-[#0b132b] transition">Knowledge Hub</a>
-                <a href="https://prof-sivadasan-portal.etsivadasan.workers.dev/discussions.html" class="text-slate-500 hover:text-[#0b132b] transition">Discussion</a>
+                <a href="index.html" class="text-slate-500 hover:text-[#0b132b] transition">Home</a>
+                <a href="courses.html" class="text-[#0b132b] border-b-2 border-[#0b132b] pb-0.5">Knowledge Hub</a>
+                <a href="discussions.html" class="text-slate-500 hover:text-[#0b132b] transition">Discussion</a>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-6 py-5">
-        <div class="space-y-4">
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-8">
+        <div class="space-y-6">
             
-            <!-- Executive Statement / Overview -->
-            <section class="bg-white border border-slate-200 p-4 rounded-xl shadow-xs relative overflow-hidden">
+            <section class="bg-white border border-slate-200 p-6 sm:p-8 rounded-xl shadow-xs relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 bg-[#0b132b]"></div>
-                <h2 class="serif-heading text-sm font-bold text-[#0b132b] mb-2 border-b border-slate-100 pb-1 flex justify-between items-center">
-                    <span>Courses Overview</span>
-                    <span class="text-[9px] font-mono uppercase text-slate-400 tracking-widest">Dossier Matrix</span>
+                <h2 class="serif-heading text-lg font-bold text-[#0b132b] mb-4 border-b border-slate-100 pb-2.5 flex justify-between items-center">
+                    <span>Academic Mission</span>
+                    <span class="text-[10px] font-mono uppercase text-slate-400 tracking-widest">Faculty Statement</span>
                 </h2>
-                <div class="text-slate-600 leading-relaxed text-xs sm:text-sm justified">
+                <div class="text-slate-600 leading-relaxed text-sm sm:text-base justified">
+                    Welcome to my academic space. I am a dedicated faculty member at Vidya Academy of Science and Technology, committed to fostering innovation, technical skill acquisition, and critical research values in engineering students. My teaching philosophy balances strong foundational theory with rigorous hands-on laboratory exploration.
+                </div>
+            </section>
+            
+            <section class="bg-white border border-slate-200 p-6 sm:p-8 rounded-xl shadow-xs">
+                <h2 class="serif-heading text-lg font-bold text-[#0b132b] mb-4 border-b border-slate-100 pb-2.5 flex justify-between items-center">
+                    <span>Courses Overview</span>
+                    <span class="text-[10px] font-mono uppercase text-slate-400 tracking-widest">Dossier Matrix</span>
+                </h2>
+                <div class="text-slate-600 leading-relaxed text-sm sm:text-base justified">
                     The Knowledge Hub provides a curated selection of advanced topics and practical course units designed for students who want to build strong foundations in Artificial Intelligence and related fields. Each course is structured to combine theory, hands-on practice, and guided project work.
                 </div>
             </section>
 
-            <!-- Curated Faculty Matrix Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-4">
                 
-                <!-- Course Card 1 -->
-                <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-xs flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute top-0 left-0 right-0 h-0.5 bg-slate-100"></div>
+                <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs flex flex-col justify-between relative overflow-hidden">
                     <div>
-                        <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-2 mb-2">
-                            <h3 class="serif-heading text-base font-bold text-[#0b132b] tracking-tight">Artificial Intelligence Foundations</h3>
-                            <a href="module1.html" class="shrink-0 bg-[#0b132b] hover:bg-[#1c2541] text-white text-[9px] font-bold tracking-wider uppercase px-2.5 py-1 rounded transition shadow-2xs flex items-center space-x-1">
-                                <span>Modules</span>
-                                <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
-                            </a>
+                        <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 mb-3">
+                            <h3 class="serif-heading text-base sm:text-lg font-bold text-[#0b132b] tracking-tight">Artificial Intelligence Foundations</h3>
+                            <div class="flex items-center space-x-2 shrink-0">
+                                <a href="discussions.html#ai-foundations-thread" class="bg-amber-600 hover:bg-amber-700 text-white text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-lg transition shadow-2xs">
+                                    Join Discussion
+                                </a>
+                                <a href="module1.html" class="bg-[#0b132b] hover:bg-[#1c2541] text-white text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-lg transition shadow-2xs">
+                                    Modules
+                                </a>
+                            </div>
                         </div>
-                        <p class="text-slate-600 text-xs leading-relaxed justified">
+                        <p class="text-slate-600 text-sm leading-relaxed justified">
                             Learn the principles behind AI systems, including reasoning, learning, and decision-making. This course introduces the concepts that power intelligent applications.
                         </p>
                     </div>
                     
-                    <!-- Horizontal Parameter Grid -->
-                    <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
-                        <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                    <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                             <span class="block text-[9px] font-bold uppercase text-slate-400 tracking-wider mb-0.5">Timeline Matrix</span>
-                            <span class="text-slate-700 font-medium text-[11px] truncate block">Tue, Thu (10:00 AM)</span>
+                            <span class="text-slate-700 font-medium text-xs sm:text-sm truncate block">Tue, Thu (10:00 AM)</span>
                         </div>
-                        <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                             <span class="block text-[9px] font-bold uppercase text-slate-400 tracking-wider mb-0.5">Location Registry</span>
-                            <span class="text-slate-700 font-medium text-[11px] truncate block">Lab 2 / Seminar Room</span>
+                            <span class="text-slate-700 font-medium text-xs sm:text-sm truncate block">Lab 2 / Seminar Room</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Course Card 2 -->
-                <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-xs flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute top-0 left-0 right-0 h-0.5 bg-slate-100"></div>
+                <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs flex flex-col justify-between relative overflow-hidden">
                     <div>
-                        <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-2 mb-2">
-                            <h3 class="serif-heading text-base font-bold text-[#0b132b] tracking-tight">Deep Learning</h3>
-                            <span class="shrink-0 border-l-4 border-amber-500 bg-amber-50/50 border-y border-r border-amber-200 text-amber-800 text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-r select-none cursor-default">
-                                Upcoming
-                            </span>
+                        <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 mb-3">
+                            <h3 class="serif-heading text-base sm:text-lg font-bold text-[#0b132b] tracking-tight">Deep Learning</h3>
+                            <div class="flex items-center space-x-2 shrink-0">
+                                <a href="discussions.html#deep-learning-thread" class="bg-amber-600 hover:bg-amber-700 text-white text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-lg transition shadow-2xs">
+                                    Join Discussion
+                                </a>
+                                <span class="border-l-4 border-amber-500 bg-amber-50/50 border-y border-r border-amber-200 text-amber-800 text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-r-md select-none cursor-default">
+                                    Upcoming
+                                </span>
+                            </div>
                         </div>
-                        <p class="text-slate-600 text-xs leading-relaxed justified">
+                        <p class="text-slate-600 text-sm leading-relaxed justified">
                             Explore neural networks, training strategies, and real-world AI modeling. This course advances students from foundational concepts to practical model building.
                         </p>
                     </div>
                     
-                    <!-- Horizontal Parameter Grid -->
-                    <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
-                        <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                    <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                             <span class="block text-[9px] font-bold uppercase text-slate-400 tracking-wider mb-0.5">Timeline Matrix</span>
-                            <span class="text-slate-700 font-medium text-[11px] truncate block">Mon, Wed (2:00 PM)</span>
+                            <span class="text-slate-700 font-medium text-xs sm:text-sm truncate block">Mon, Wed (2:00 PM)</span>
                         </div>
-                        <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                             <span class="block text-[9px] font-bold uppercase text-slate-400 tracking-wider mb-0.5">Location Registry</span>
-                            <span class="text-slate-700 font-medium text-[11px] truncate block">Main Auditorium</span>
+                            <span class="text-slate-700 font-medium text-xs sm:text-sm truncate block">Main Auditorium</span>
                         </div>
                     </div>
                 </div>
@@ -127,11 +133,10 @@
         </div>
     </main>
 
-    <!-- Institutional Footer Panel -->
-    <footer class="bg-[#0b132b] text-slate-400 text-[11px] tracking-wide py-4 border-t border-slate-800 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2">
+    <footer class="bg-[#0b132b] text-slate-400 text-[12px] tracking-wide py-6 border-t border-slate-800 mt-auto">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2">
             <p>&copy; 2026 Vidya Academy of Science and Technology. All Rights Reserved.</p>
-            <p class="text-[9px] text-slate-500 font-mono uppercase tracking-widest">Internal Ledger Sync: Verified</p>
+            <p class="text-[10px] text-slate-500 font-mono uppercase tracking-widest">Internal Ledger Sync: Verified</p>
         </div>
     </footer>
 
