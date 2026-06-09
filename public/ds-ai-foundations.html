@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 1.1: Core Perspectives | VAST</title>
+    <!-- Tailwind CSS Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- MathJax Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght=700&family=Plus+Jakarta+Sans:wght=500;600;700;800&family=Fira+Code:wght=500;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .justified { text-align: justify; text-justify: inter-word; }
+        code { font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body class="text-slate-950 flex flex-col min-h-screen antialiased font-medium">
+
+    <!-- Top Institutional Bar -->
+    <div class="bg-[#0b132b] text-[#e0e1dd] text-[13px] font-bold tracking-widest uppercase py-2 px-6 border-b border-[#1c2541]">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <span class="justified">Vidya Academy of Science & Technology</span>
+            <span class="text-amber-500 font-bold justified">Faculty Portfolio</span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="bg-white border-b border-slate-300 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2.5">
+                <div class="h-6 w-1.5 bg-[#0b132b] rounded-full"></div>
+                <span class="serif-heading text-xl font-bold tracking-wide text-[#0b132b] justified">
+                    Dr. Sivadasan Portal
+                </span>
+            </a>
+            <nav class="flex space-x-6 text-xs font-bold tracking-wide uppercase">
+                <a href="index.html" class="text-slate-900 hover:text-black border-b-2 border-transparent hover:border-slate-900 pb-0.5 redistributed justified">Home</a>
+                <a href="courses.html" class="text-[#0b132b] border-b-2 border-[#0b132b] pb-0.5 redistributed justified">Knowledge Hub</a>
+                <a href="discussions.html" class="text-slate-900 hover:text-black border-b-2 border-transparent hover:border-slate-900 pb-0.5 redistributed justified">Discussion</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Content Layout Grid -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Fixed Sub-Navigation Sidebar -->
+            <aside class="lg:col-span-3 bg-white border border-slate-300 p-5 rounded-xl shadow-sm space-y-4 sticky top-24">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-900 justified">Lecture Roadmap</p>
+                    <a href="module1.html" class="text-[11px] font-bold uppercase text-amber-800 hover:underline justified">← Up to Index</a>
+                </div>
+                <nav class="space-y-1 text-xs font-bold uppercase tracking-wide">
+                    <a href="#section-continuum" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition justified">1. Knowledge Continuum</a>
+                    <a href="#section-paradigm" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition justified">2. Automation vs. Intelligence</a>
+                    <a href="#section-decision" class="block py-2.5 px-3 rounded-lg bg-slate-900 text-white border-l-4 border-amber-500 justified">3. Non-Arbitrary Decisions</a>
+                    <a href="#section-mechanics" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition justified">4. Mechanics of Thinking</a>
+                    <a href="#section-comparison" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition justified">5. Natural vs. Artificial</a>
+                </nav>
+            </aside>
+
+            <!-- Right Main Content Pipeline -->
+            <div class="lg:col-span-9 space-y-8">
+                
+                <!-- Lecture Header Card -->
+                <section class="bg-white border border-slate-300 p-6 sm:p-8 rounded-xl shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-2 bg-[#0b132b]"></div>
+                    <span class="text-[11px] font-mono uppercase text-amber-800 tracking-widest font-extrabold block mb-1 justified">Lecture Sheet 1.1</span>
+                    <h1 class="serif-heading text-3xl sm:text-4xl font-bold text-[#0b132b] tracking-tight justified">Core Perspectives: DS & AI Transformation</h1>
+                </section>
+
+                <!-- Section 1: The Continuum -->
+                <section id="section-continuum" class="bg-white border border-slate-300 p-6 sm:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex justify-between items-center">
+                        <span class="justified">1. The Data-to-Intelligence Continuum</span>
+                        <span class="text-[11px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded justified">Sec. 01</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-base leading-relaxed font-semibold justified">
+                        How does a system transition from hosting raw data elements to executing non-arbitrary computational logic? The transformation scales through five explicit mathematical states:
+                    </p>
+
+                    <!-- High-Visibility Deep Contrast Breakdown -->
+                    <div class="space-y-5">
+                        <!-- Step 1 -->
+                        <div class="flex items-start space-x-4 p-4 rounded-xl border border-slate-300 shadow-xs bg-white">
+                            <div class="w-9 h-9 rounded-lg bg-[#0b132b] text-white flex items-center justify-center font-mono text-sm font-black shrink-0">01</div>
+                            <div class="space-y-2 w-full">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-100 pb-1">
+                                    <h4 class="text-base font-extrabold text-[#0b132b] uppercase tracking-wide justified">Data — Raw, Static Elements</h4>
+                                    <span class="text-xs font-mono font-black bg-[#0b132b] text-white px-2 py-0.5 rounded shadow-xs justified">State: \(D\)</span>
+                                </div>
+                                <p class="text-slate-950 text-sm leading-relaxed font-medium justified">Isolated variables or facts carrying zero functional context on their own.</p>
+                                <div class="flex items-center space-x-2 pt-1">
+                                    <span class="bg-[#1c2541] text-white font-mono text-[10px] uppercase font-black px-2 py-1 rounded-sm shrink-0 tracking-wider shadow-xs justified">Example</span>
+                                    <span class="text-black text-sm font-bold block border-l-2 border-slate-950 pl-2 justified">The raw integer <code class="bg-slate-100 text-rose-700 px-1.5 py-0.5 rounded font-black border border-slate-200">105</code> sitting inside a database registry.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex items-start space-x-4 p-4 rounded-xl border border-slate-300 shadow-xs bg-white">
+                            <div class="w-9 h-9 rounded-lg bg-[#1c2541] text-white flex items-center justify-center font-mono text-sm font-black shrink-0">02</div>
+                            <div class="space-y-2 w-full">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-100 pb-1">
+                                    <h4 class="text-base font-extrabold text-[#1c2541] uppercase tracking-wide justified">Information — Structured Context</h4>
+                                    <span class="text-xs font-mono font-black bg-[#1c2541] text-white px-2 py-0.5 rounded shadow-xs justified">Mapping: \(I = f(D)\)</span>
+                                </div>
+                                <p class="text-slate-950 text-sm leading-relaxed font-medium justified">Data processed through a relational function to assign data types, units, or schemas.</p>
+                                <div class="flex items-center space-x-2 pt-1">
+                                    <span class="bg-[#1c2541] text-white font-mono text-[10px] uppercase font-black px-2 py-1 rounded-sm shrink-0 tracking-wider shadow-xs justified">Example</span>
+                                    <span class="text-black text-sm font-bold block border-l-2 border-slate-950 pl-2 justified">Applying an environmental attribute schema: <span class="text-amber-950 font-black">"Server Rack Temperature = 105°F."</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex items-start space-x-4 p-4 rounded-xl border border-slate-300 shadow-xs bg-white">
+                            <div class="w-9 h-9 rounded-lg bg-[#3a506b] text-white flex items-center justify-center font-mono text-sm font-black shrink-0">03</div>
+                            <div class="space-y-2 w-full">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-100 pb-1">
+                                    <h4 class="text-base font-extrabold text-[#3a506b] uppercase tracking-wide justified">Knowledge — Operational Rules</h4>
+                                    <span class="text-xs font-mono font-black bg-[#3a506b] text-white px-2 py-0.5 rounded shadow-xs justified">Evaluation: \(K = \phi(I)\)</span>
+                                </div>
+                                <p class="text-slate-950 text-sm leading-relaxed font-medium justified">Synthesizing information against physics boundaries or logic conditions to determine systemic safety metrics.</p>
+                                <div class="flex items-center space-x-2 pt-1">
+                                    <span class="bg-[#1c2541] text-white font-mono text-[10px] uppercase font-black px-2 py-1 rounded-sm shrink-0 tracking-wider shadow-xs justified">Example</span>
+                                    <span class="text-black text-sm font-bold block border-l-2 border-slate-950 pl-2 justified">Validating an engineering constraint: <span class="text-amber-950 font-black">"Hardware parameters confirm servers overheat if metrics exceed 95°F."</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex items-start space-x-4 p-4 rounded-xl border border-slate-300 shadow-xs bg-white">
+                            <div class="w-9 h-9 rounded-lg bg-[#5c677d] text-white flex items-center justify-center font-mono text-sm font-black shrink-0">04</div>
+                            <div class="space-y-2 w-full">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-100 pb-1">
+                                    <h4 class="text-base font-extrabold text-[#5c677d] uppercase tracking-wide justified">Experience — Logged Memory Cache</h4>
+                                    <span class="text-xs font-mono font-black bg-[#5c677d] text-white px-2 py-0.5 rounded shadow-xs justified">Accumulation: \(E = \sum K_t\)</span>
+                                </div>
+                                <p class="text-slate-950 text-sm leading-relaxed font-medium justified">The chronological compilation of states recorded over time, constructing a baseline historical memory bank.</p>
+                                <div class="flex items-center space-x-2 pt-1">
+                                    <span class="bg-[#1c2541] text-white font-mono text-[10px] uppercase font-black px-2 py-1 rounded-sm shrink-0 tracking-wider shadow-xs justified">Example</span>
+                                    <span class="text-black text-sm font-bold block border-l-2 border-slate-950 pl-2 justified">Reading past storage logs: <span class="text-amber-950 font-black">"Logs show that whenever temperatures passed 100°F, activating auxiliary cooling stabilized the environment."</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-amber-50 border-2 border-amber-400 shadow-sm">
+                            <div class="w-9 h-9 rounded-lg bg-amber-700 text-white flex items-center justify-center font-mono text-sm font-black shrink-0 shadow-xs">05</div>
+                            <div class="space-y-2 w-full">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-amber-200 pb-1">
+                                    <h4 class="text-base font-black text-amber-950 uppercase tracking-wide justified">Intelligence — Non-Arbitrary Optimization</h4>
+                                    <span class="text-xs font-mono font-black bg-amber-700 text-white px-2 py-0.5 rounded shadow-xs justified">Synthesis: \(\mathcal{I} = \psi(E, I_{\text{current}})\)</span>
+                                </div>
+                                <p class="text-black text-sm leading-relaxed font-bold justified">The capacity to cross-reference runtime environments against memory indices, instantly producing optimized output actions.</p>
+                                <div class="flex items-center space-x-2 pt-1">
+                                    <span class="bg-amber-800 text-white font-mono text-[10px] uppercase font-black px-2 py-1 rounded-sm shrink-0 tracking-wider shadow-xs justified">System Output</span>
+                                    <span class="text-amber-950 text-sm font-black block border-l-2 border-amber-900 pl-2 justified">The automated controller turns on backup cooling loops and slows down processor cycles to immediately drop temperature.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Automation vs. Intelligence -->
+                <section id="section-paradigm" class="bg-white border border-slate-300 p-6 sm:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex justify-between items-center">
+                        <span class="justified">2. Bounding Core Concepts: Automation vs. True Intelligence</span>
+                        <span class="text-[11px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded justified">Sec. 02</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-sm leading-relaxed font-semibold justified">
+                        To understand Data Science and Artificial Intelligence, a layman must grasp a single core rule: <strong>Who created the decision recipe?</strong> Was it hardcoded by an engineer, or discovered independently by the machine?
+                    </p>
+
+                    <!-- Core Comparison Matrix Blocks -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Automation Block -->
+                        <div class="p-5 border border-slate-300 bg-slate-50 rounded-xl space-y-3 relative overflow-hidden shadow-xs">
+                            <div class="absolute top-0 left-0 w-2 h-full bg-slate-500"></div>
+                            <span class="text-[10px] font-mono font-black text-slate-900 uppercase tracking-widest block font-bold border-b border-slate-200 pb-1 justified">System Mode A</span>
+                            <h3 class="serif-heading text-xl font-bold text-[#0b132b] justified">Static Automation</h3>
+                            <p class="text-[#0b132b] font-extrabold text-sm leading-relaxed justified">Rules are explicitly formulated by the Human Engineer.</p>
+                            <p class="text-slate-950 text-sm leading-relaxed font-medium justified">
+                                The machine does not "learn" anything. It follows rigid, pre-programmed <code class="bg-slate-200 text-black px-1 rounded font-bold border border-slate-300 font-mono">IF-THEN</code> steps written by a human expert. If an unmapped edge case occurs, the system fails completely.
+                            </p>
+                            <div class="bg-white p-3 border border-slate-300 rounded-lg text-xs font-bold space-y-1 shadow-2xs">
+                                <span class="text-slate-900 uppercase font-mono text-[10px] font-black block border-b border-slate-100 pb-0.5 justified">Layman Coffee Machine Analogy</span>
+                                <p class="text-black text-sm font-medium leading-relaxed font-semibold justified">A button press always dispenses exactly 50ml of water and 10g of beans, regardless of whether the coffee tastes perfect or burned.</p>
+                            </div>
+                        </div>
+
+                        <!-- Intelligence Block -->
+                        <div class="p-5 border-2 border-amber-300 bg-amber-50/40 rounded-xl space-y-3 relative overflow-hidden shadow-xs">
+                            <div class="absolute top-0 left-0 w-2 h-full bg-amber-600"></div>
+                            <span class="text-[10px] font-mono font-black text-amber-900 uppercase tracking-widest block font-bold border-b border-amber-200 pb-1 justified">System Mode B</span>
+                            <h3 class="serif-heading text-xl font-bold text-amber-900 justified">Machine Intelligence</h3>
+                            <p class="text-amber-950 font-black text-sm leading-relaxed justified">Rules are independently learned by the Computational System.</p>
+                            <p class="text-slate-950 text-sm leading-relaxed font-medium justified">
+                                Humans do not write the rules. Instead, they provide raw training targets, and the system evaluates past experiences to find its own optimized mathematical weights through parameter optimization loops.
+                            </p>
+                            <div class="bg-white p-3 border border-amber-300 rounded-lg text-xs font-bold space-y-1 shadow-2xs">
+                                <span class="text-amber-800 uppercase font-mono text-[10px] font-black block border-b border-amber-100 pb-0.5 justified">Layman Barista Agent Analogy</span>
+                                <p class="text-black text-sm font-medium leading-relaxed font-semibold justified">An AI monitor scans bean quality, dynamically modifies grind speeds, and registers real-time customer feedback data arrays to continuously discover the optimal brewing rule.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Training vs Inference Framework Box -->
+                    <div class="border border-amber-300 bg-amber-50 p-5 rounded-xl space-y-4 shadow-xs">
+                        <h4 class="text-base font-black text-amber-950 font-mono uppercase tracking-wider border-b border-amber-200 pb-1 justified">The Phase Shift: Training vs. Inference Execution</h4>
+                        <p class="text-slate-950 text-sm leading-relaxed font-semibold justified">
+                            How does an intelligent system apply rules "suddenly" at runtime without lag? It leverages a two-phase computational lifecycle:
+                        </p>
+                        <div class="space-y-4 text-sm text-slate-950 pl-1 font-semibold">
+                            <div class="justified">
+                                <strong class="text-black font-black block mb-1">1. The Training Phase (The Historical Learning Loop):</strong> The machine spends intensive compute hours sweeping through massive historical logs to solve and map the optimal rule weight equations:
+                                <div class="my-3 bg-white border-2 border-amber-300 p-4 rounded-lg text-center font-mono shadow-sm">
+                                    <strong class="text-black font-black text-base">$$\theta^* = \arg\min_\theta \sum \mathcal{L}\big(f_\theta(D), I\big)$$</strong>
+                                </div>
+                            </div>
+                            <div class="justified pt-2 border-t border-amber-200/60">
+                                <strong class="text-black font-black block mb-1">2. The Inference Phase (Instant Runtime Execution):</strong> Once learning stabilizes, the resulting optimal parameters are frozen directly into system memory. When fresh raw input data arrives at runtime, the machine applies this pre-learned map <strong>instantly and suddenly</strong>, producing smart choices without wasting time recalculating the global formulas from scratch.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Decisions -->
+                <section id="section-decision" class="bg-white border border-slate-300 p-6 sm:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex justify-between items-center">
+                        <span class="justified">3. Non-Arbitrary Decision Spaces</span>
+                        <span class="text-[11px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded justified">Sec. 03</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-sm leading-relaxed font-medium justified">
+                        Without structured parameters, machine actions degrade into chaotic random anomalies. Conversely, an intelligent system models decision-making non-arbitrarily. Choices are driven by immediate input arrays and explicitly calculated using this optimization function:
+                    </p>
+
+                    <!-- Math Display Block -->
+                    <div class="bg-slate-100 p-5 rounded-xl border border-slate-300 text-center font-mono font-bold text-base shadow-2xs">
+                        <strong>$$Decision^* = \arg\max_{a \in \mathcal{A}} \mathcal{W}\Big(a \ \Big| \ I_{\text{available}}, \ K_{\text{knowledge}}\Big)$$</strong>
+                    </div>
+
+                    <!-- Step-by-Step Layman Variable Explainer -->
+                    <div class="border-l-4 border-[#0b132b] bg-slate-50 p-5 rounded-r-xl space-y-3 shadow-3xs">
+                        <h4 class="text-sm font-black uppercase text-[#0b132b] tracking-wider border-b border-slate-200 pb-1 justified">Mathematical Component Explainer</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm font-semibold text-slate-950">
+                            <div class="space-y-2">
+                                <p class="justified"><span>\(\mathcal{A}\)</span> &rarr; <strong>Action Space:</strong> The complete list of every possible action the system is capable of executing.</p>
+                                <p class="justified"><span>\(a \in \mathcal{A}\)</span> &rarr; <strong>Candidate Action:</strong> One specific choice currently being evaluated from that action list.</p>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="justified"><span>\(I_{\text{available}}\)</span> &rarr; <strong>Current Information:</strong> The real-time situational facts streaming into the machine right now.</p>
+                                <p class="justified"><span>\(K_{\text{knowledge}}\)</span> &rarr; <strong>Learned Knowledge:</strong> The historical rules and boundary limits the machine holds in memory.</p>
+                            </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-200 text-xs sm:text-sm font-semibold text-slate-950 space-y-2">
+                            <p class="justified">
+                                <span>\(\mathcal{W}(a \mid \dots)\)</span> &rarr; <strong>The Weighting Score:</strong> A scoring function that calculates a compatibility grade for the action, contingent upon (<span>\(\mid\)</span>) the active information and knowledge structures.
+                            </p>
+                            <p class="justified">
+                                <span>\(\arg\max\)</span> &rarr; <strong>The Maximizer Selector:</strong> This operator commands the system to sweep through every single possible action inside the set, compute its weight score, and **output the exact single action that yields the absolute maximum grade**.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Machine Mechanics -->
+                <section id="section-mechanics" class="bg-white border border-slate-300 p-6 sm:p-8 rounded-xl shadow-sm space-y-4">
+                    <h2 class="serif-heading text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex justify-between items-center">
+                        <span class="justified">4. Mechanics of Computational Thinking</span>
+                        <span class="text-[11px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded justified">Sec. 04</span>
+                    </h2>
+                    <p class="text-slate-950 text-sm leading-relaxed font-medium justified">
+                        In computing environments, physical experience and reflection map to distinct state operations:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-2">
+                        <div class="p-4 border border-slate-300 bg-slate-50 rounded-xl shadow-2xs">
+                            <span class="text-sm font-black text-black block mb-1 uppercase tracking-wide justified">Experience \(\equiv\) Memory Logging</span>
+                            <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-medium justified">
+                                System interactions continually register arrays into persistent repositories. Experience is equivalent to constant structural **Data Creation**.
+                            </p>
+                        </div>
+                        <div class="p-4 border border-slate-300 bg-slate-50 rounded-xl shadow-2xs">
+                            <span class="text-sm font-black text-black block mb-1 uppercase tracking-wide justified">Thinking \(\equiv\) Memory Iteration</span>
+                            <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-medium justified">
+                                Cognitive processing maps to **iterating systematically through past historical memory indices**, optimizing state distributions dynamically.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-100 p-4 rounded-xl border border-slate-300 text-center font-bold text-base shadow-2xs font-mono">
+                        <strong>$$\mathcal{T}_{\text{thinking}} = \sum_{t=1}^{T} \Phi\Big(\mathcal{Memory}_{\text{past}}[t]\Big)$$</strong>
+                    </div>
+                </section>
+
+                <!-- Section 5: Boundary Limits -->
+                <section id="section-comparison" class="bg-white border border-slate-300 p-6 sm:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex justify-between items-center">
+                        <span class="justified">5. Structural Constraints: Natural vs. Artificial</span>
+                        <span class="text-[11px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded justified">Sec. 05</span>
+                    </h2>
+                    <p class="text-slate-950 text-sm leading-relaxed font-medium justified">
+                        The divergence between organic brains and digital silicon substrates emphasizes scaling bounds and computational exhaustion thresholds:
+                    </p>
+
+                    <!-- Comparison Grid Table High Contrast -->
+                    <div class="overflow-x-auto border border-slate-300 rounded-xl shadow-xs bg-white">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-900 text-white font-black uppercase text-[11px] tracking-wider">
+                                    <th class="p-4 border-r border-slate-800">Operational Field</th>
+                                    <th class="p-4 border-r border-slate-800">Natural Vector</th>
+                                    <th class="p-4">Artificial Vector</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-300 text-black font-bold">
+                                <tr>
+                                    <td class="p-4 bg-slate-100 font-black text-[#0b132b] border-r border-slate-300 justified">Memory Bounds</td>
+                                    <td class="p-4 border-r border-slate-300 font-semibold justified">Strictly Bounded / Prone to Decay</td>
+                                    <td class="p-4 text-amber-950 font-black bg-amber-50/20 justified">Virtually Unlimited / Persistent Registry</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 bg-slate-100 font-black text-[#0b132b] border-r border-slate-300 justified">Thinking Iteration</td>
+                                    <td class="p-4 border-r border-slate-300 font-semibold justified">Heuristic Search Boundaries</td>
+                                    <td class="p-4 text-amber-950 font-black bg-amber-50/20 justified">Unbounded High-Throughput Sweeps</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 bg-slate-100 font-black text-[#0b132b] border-r border-slate-300 justified">Exhaustion Limits</td>
+                                    <td class="p-4 text-rose-800 font-bold border-r border-slate-300 justified">Fatigue Bounded / Performance Drop</td>
+                                    <td class="p-4 text-emerald-900 font-black bg-emerald-50/20 justified">Zero Fatigue Operational Baseline (\(t \to \infty\))</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <blockquote class="border-l-4 border-amber-600 bg-amber-50 p-4 rounded-r-xl rounded-l-xs text-sm text-black font-bold leading-relaxed shadow-2xs justified">
+                        <strong>Conclusion:</strong> A smart system logging experiences via data generation, leveraging unbounded iteration capacities to apply historical principles across dynamic runtime states without fatigue decay, achieves contextual machine intelligence.
+                    </blockquote>
+                </section>
+                
+            </div>
+        </div>
+    </main>
+
+    <!-- Institutional Footer Panel -->
+    <footer class="bg-[#0b132b] text-slate-300 text-[13px] font-bold tracking-wide py-5 border-t border-slate-800 mt-auto shadow-inner">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2">
+            <p class="justified">&copy; 2026 Vidya Academy of Science and Technology. All Rights Reserved.</p>
+            <p class="text-[11px] text-amber-500 font-mono uppercase tracking-widest font-black justified">Internal Ledger Sync: Verified</p>
+        </div>
+    </footer>
+
+    <!-- Optimized Sizing Sticky Discussion Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="discussions.html" class="flex items-center space-x-2 bg-[#0b132b] text-white px-4 py-2 rounded-full shadow-lg hover:bg-[#1c2541] transition-all border border-amber-400 group">
+            <!-- Sleeker Alert Dot -->
+            <div class="relative flex h-2 w-2">
+                <span class="animate-pulse absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </div>
+            <!-- High-Contrast Ultra-Compact Label -->
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-[#e0e1dd] group-hover:text-amber-400 transition-colors">
+                Discussion Hub
+            </span>
+        </a>
+    </div>
+
+</body>
+</html>
