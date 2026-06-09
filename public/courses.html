@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Hub | VAST Faculty Portal</title>
+    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght=600;700&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap');
@@ -20,6 +21,7 @@
 </head>
 <body class="text-slate-900 flex flex-col min-h-screen antialiased">
 
+    <!-- Top Institutional Bar -->
     <div class="bg-[#0b132b] text-[#e0e1dd] text-[12px] font-semibold tracking-widest uppercase py-2 px-6 border-b border-[#1c2541]">
         <div class="max-w-5xl mx-auto flex justify-between items-center">
             <span>Vidya Academy of Science & Technology</span>
@@ -27,6 +29,7 @@
         </div>
     </div>
 
+    <!-- Navigation Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
         <div class="max-w-7xl mx-auto px-6 py-2.5 flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-2.5">
@@ -43,9 +46,11 @@
         </div>
     </header>
 
+    <!-- Main Content Container -->
     <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-8">
         <div class="space-y-6">
             
+            <!-- Faculty Welcome Block -->
             <section class="bg-white border border-slate-200 p-6 sm:p-8 rounded-xl shadow-xs relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 bg-[#0b132b]"></div>
                 <h2 class="serif-heading text-lg font-bold text-[#0b132b] mb-4 border-b border-slate-100 pb-2.5 flex justify-between items-center">
@@ -57,24 +62,27 @@
                 </div>
             </section>
             
+            <!-- Courses Overview -->
             <section class="bg-white border border-slate-200 p-6 sm:p-8 rounded-xl shadow-xs">
                 <h2 class="serif-heading text-lg font-bold text-[#0b132b] mb-4 border-b border-slate-100 pb-2.5 flex justify-between items-center">
                     <span>Courses Overview</span>
                     <span class="text-[10px] font-mono uppercase text-slate-400 tracking-widest">Dossier Matrix</span>
                 </h2>
                 <div class="text-slate-600 leading-relaxed text-sm sm:text-base justified">
-                    The Knowledge Hub provides a curated selection of advanced topics and practical course units designed for students who want to build strong foundations in Artificial Intelligence and related fields. Each course is structured to combine theory, hands-on practice, and guided project work.
+                    The Knowledge Hub provides a curated selection of advanced topics and practical course units designed for students who want to build strong foundations in Data Science, Artificial Intelligence, and related engineering fields. Each course is structured to combine theory, hands-on practice, and guided project work.
                 </div>
             </section>
 
+            <!-- Syllabi Cards Stack -->
             <div class="space-y-4">
                 
+                <!-- Course Card 1: Data Science & AI Foundations -->
                 <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs flex flex-col justify-between relative overflow-hidden">
                     <div>
                         <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 mb-3">
-                            <h3 class="serif-heading text-base sm:text-lg font-bold text-[#0b132b] tracking-tight">Artificial Intelligence Foundations</h3>
+                            <h3 class="serif-heading text-base sm:text-lg font-bold text-[#0b132b] tracking-tight">Data Science & Artificial Intelligence Foundations</h3>
                             <div class="flex items-center space-x-2 shrink-0">
-                                <a href="discussions.html#ai-foundations-thread" class="bg-amber-600 hover:bg-amber-700 text-white text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-lg transition shadow-2xs">
+                                <a href="discussions.html#data-science-thread" class="bg-amber-600 hover:bg-amber-700 text-white text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-lg transition shadow-2xs">
                                     Join Discussion
                                 </a>
                                 <a href="module1.html" class="bg-[#0b132b] hover:bg-[#1c2541] text-white text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-lg transition shadow-2xs">
@@ -83,7 +91,7 @@
                             </div>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed justified">
-                            Learn the principles behind AI systems, including reasoning, learning, and decision-making. This course introduces the concepts that power intelligent applications.
+                            Explore mathematical frameworks in data science alongside fundamental principles of AI architectures. This unified course covers data preprocessing, statistical analysis, and data mining paradigms before transitioning into automated reasoning, search algorithms, and core machine learning concepts.
                         </p>
                     </div>
                     
@@ -99,6 +107,7 @@
                     </div>
                 </div>
 
+                <!-- Course Card 2: Deep Learning -->
                 <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs flex flex-col justify-between relative overflow-hidden">
                     <div>
                         <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 mb-3">
@@ -113,7 +122,7 @@
                             </div>
                         </div>
                         <p class="text-slate-600 text-sm leading-relaxed justified">
-                            Explore neural networks, training strategies, and real-world AI modeling. This course advances students from foundational concepts to practical model building.
+                            Explore neural networks, backpropagation mechanics, training strategies, and real-world AI modeling. This course advances students from foundational algorithms to modern multi-layered model building.
                         </p>
                     </div>
                     
@@ -133,6 +142,7 @@
         </div>
     </main>
 
+    <!-- Institutional Footer Panel -->
     <footer class="bg-[#0b132b] text-slate-400 text-[12px] tracking-wide py-6 border-t border-slate-800 mt-auto">
         <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2">
             <p>&copy; 2026 Vidya Academy of Science and Technology. All Rights Reserved.</p>
