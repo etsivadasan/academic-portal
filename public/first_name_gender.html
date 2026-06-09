@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 2.2: Name-Based Gender Recognition | VAST</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght=700&family=Plus+Jakarta+Sans:wght=500;600;700;800&family=Fira+Code:wght=500;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        code { font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body class="text-slate-950 flex flex-col min-h-screen antialiased font-medium px-0 sm:px-2 md:px-4">
+
+    <div class="bg-[#0b132b] text-[#e0e1dd] text-[11px] sm:text-[13px] font-bold tracking-widest uppercase py-2.5 px-4 sm:px-6 border-b border-[#1c2541]">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+            <span>Vidya Academy of Science & Technology</span>
+            <span class="text-amber-500 font-bold">Faculty Portfolio</span>
+        </div>
+    </div>
+
+    <header class="bg-white border-b border-slate-300 sticky top-0 z-50 shadow-sm w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center space-x-2.5 shrink-0">
+                <div class="h-6 w-1.5 bg-[#0b132b] rounded-full"></div>
+                <span class="serif-heading text-base sm:text-lg md:text-xl font-bold tracking-wide text-[#0b132b] text-left">
+                    Dr. Sivadasan Portal
+                </span>
+            </a>
+            
+            <nav class="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-[11px] sm:text-xs font-bold tracking-wide uppercase">
+                <a href="index.html" class="text-slate-900 hover:text-black border-b-2 border-transparent hover:border-slate-900 pb-0.5 whitespace-nowrap transition-colors">Home</a>
+                <a href="courses.html" class="text-[#0b132b] border-b-2 border-[#0b132b] pb-0.5 whitespace-nowrap">Knowledge Hub</a>
+                <a href="discussions.html" class="text-slate-900 hover:text-black border-b-2 border-transparent hover:border-slate-900 pb-0.5 whitespace-nowrap transition-colors">Discussion</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 md:py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
+            
+            <aside class="hidden lg:block lg:col-span-3 bg-white border border-slate-300 p-5 rounded-xl shadow-sm space-y-4 sticky top-24">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-900">Lecture Roadmap</p>
+                    <a href="module1.html" class="text-[11px] font-bold uppercase text-amber-800 hover:underline">← Up to Index</a>
+                </div>
+                <nav class="space-y-1 text-xs font-bold uppercase tracking-wide">
+                    <a href="#section-problem-context" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition">1. Real-World Context</a>
+                    <a href="#section-human-cognition" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition">2. Human Pattern Recognition</a>
+                    <a href="#section-machine-learning" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition">3. Machine Learning Paradigm</a>
+                    <a href="#section-mathematical-formalism" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition">4. Mathematical Formalism</a>
+                    <a href="#section-algorithmic-flow" class="block py-2.5 px-3 rounded-lg bg-slate-900 text-white border-l-4 border-amber-500">5. Algorithm & Flowchart</a>
+                </nav>
+            </aside>
+
+            <div class="lg:col-span-9 space-y-6 md:space-y-8 w-full overflow-hidden">
+                
+                <section class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-2 bg-[#0b132b]"></div>
+                    <span class="text-[10px] sm:text-[11px] font-mono uppercase text-amber-800 tracking-widest font-extrabold block mb-1 text-left">Lecture Sheet 1.3</span>
+                    <h1 class="serif-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0b132b] tracking-tight text-left">Supervised Learning: Gender Classification from Indian Names</h1>
+                </section>
+
+                <section id="section-problem-context" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">1. Real-World Problem Context & Balanced Dataset</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 01</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-sm sm:text-base leading-relaxed font-semibold text-left md:text-justify">
+                        In Data Science and Artificial Intelligence, predicting gender attributes from text representations is an essential engineering application—ranging from user personalization to population statistics. In the Indian linguistic landscape, name endings carry structural properties that heavily correlate with gender identity.
+                    </p>
+
+                    <div class="space-y-4">
+                        <h3 class="text-sm sm:text-base font-extrabold text-[#0b132b] uppercase tracking-wide text-left">Collected Observation Sample Set (\(\mathcal{D}\))</h3>
+                        <div class="overflow-x-auto border border-slate-300 rounded-xl shadow-xs bg-white">
+                            <table class="w-full text-left border-collapse text-xs sm:text-sm min-w-[400px]">
+                                <thead>
+                                    <tr class="bg-slate-900 text-white font-black uppercase text-[10px] tracking-wider border-b border-slate-300">
+                                        <th class="p-3 border-r border-slate-700">First Name (\(x\))</th>
+                                        <th class="p-3 border-r border-slate-700">Labeled Gender (\(y\))</th>
+                                        <th class="p-3 border-r border-slate-700">First Name (\(x\))</th>
+                                        <th class="p-3">Labeled Gender (\(y\))</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 font-bold text-slate-900">
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Geetha</td><td class="p-3 border-r border-slate-200 text-rose-700">Female</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Thankamani</td><td class="p-3 text-rose-700">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Ramkumar</td><td class="p-3 border-r border-slate-200 text-blue-700">Male</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Sulochana</td><td class="p-3 text-rose-700">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Mallika</td><td class="p-3 border-r border-slate-200 text-rose-700">Female</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Radhika</td><td class="p-3 text-rose-700">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Mohan</td><td class="p-3 border-r border-slate-200 text-blue-700">Male</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Vijaya</td><td class="p-3 text-rose-700">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Suresh</td><td class="p-3 border-r border-slate-200 text-blue-700">Male</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Krishna</td><td class="p-3 text-rose-700">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Lalitha</td><td class="p-3 border-r border-slate-200 text-rose-700">Female</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Krishna</td><td class="p-3 text-blue-700">Male</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Renuka</td><td class="p-3 border-r border-slate-200 text-rose-700">Female</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Pallavi</td><td class="p-3 text-rose-700">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Remya</td><td class="p-3 border-r border-slate-200 text-rose-700">Female</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Sumathi</td><td class="p-3 text-rose-700">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Vijay</td><td class="p-3 border-r border-slate-200 text-blue-700">Male</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Raju</td><td class="p-3 text-blue-700">Male</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">John</td><td class="p-3 border-r border-slate-200 text-blue-700">Male</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Surya</td><td class="p-3 text-blue-700">Male</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Rajeev</td><td class="p-3 border-r border-slate-200 text-blue-700">Male</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Manju</td><td class="p-3 text-rose-700">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Gireesh</td><td class="p-3 border-r border-slate-200 text-blue-700">Male</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Ramu</td><td class="p-3 text-blue-700">Male</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Sooraj</td><td class="p-3 border-r border-slate-200 text-blue-700">Male</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Deva</td><td class="p-3 text-blue-700">Male</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Kanakavalli</td><td class="p-3 border-r border-slate-200 text-rose-700">Female</td>
+                                        <td class="p-3 border-r border-slate-200 bg-slate-50">Ashok</td><td class="p-3 text-blue-700">Male</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-human-cognition" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">2. Epistemology: Human Structural Comprehension</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 02</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-semibold text-left md:text-justify">
+                        When a human expert systematically reviews the sample space, the biological neural framework performs logical induction. The human brain filters structural noises and concentrates on boundary patterns, immediately focusing on the **trailing character** of each text sequence.
+                    </p>
+
+                    <div class="p-4 bg-slate-50 border border-slate-300 rounded-xl space-y-3">
+                        <h4 class="text-xs sm:text-sm font-black uppercase text-[#0b132b] tracking-wider border-b border-slate-200 pb-1 text-left">Human Analytical Observations</h4>
+                        <ul class="list-disc pl-5 space-y-2 text-xs sm:text-sm text-slate-900 font-bold">
+                            <li><span class="text-emerald-800">Vowel-Ending Trailing Terminals:</span> Names ending with vowel tokens (<code class="bg-white px-1 border rounded">a, i, u</code>) like <em>Geetha, Kanakavalli, Remya</em> lean strongly toward <strong class="text-rose-700">Female</strong> classifications.</li>
+                            <li><span class="text-indigo-800">Consonant-Ending Trailing Terminals:</span> Names ending with consonant segments (<code class="bg-white px-1 border rounded">r, n, h, j, v, k</code>) like <em>Ramkumar, Mohan, Suresh, Rajeev, Ashok</em> map heavily to <strong class="text-blue-700">Male</strong> classifications.</li>
+                            <li><span class="text-amber-700">Boundary Multi-Mapping (Ambiguity):</span> Certain sequences like <em>Krishna</em> and <em>Surya</em> bypass static boundaries, meaning a single string matches both classifications depending on additional regional contexts.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="section-machine-learning" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">3. The Paradigm Shift: Mathematical Feature Learning</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 03</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-medium text-left md:text-justify">
+                        To transition this problem to a computer <strong>without explicitly coding IF-THEN conditions</strong>, we configure the machine to mathematically evaluate the data repository. Instead of giving it programmatic rules, the machine builds structural representations by breaking down string variables into numeric feature arrays.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                        <div class="p-4 border border-slate-300 bg-slate-50 rounded-xl space-y-2 shadow-xs">
+                            <span class="text-[9px] font-mono font-black text-slate-900 uppercase tracking-widest block font-bold border-b border-slate-200 pb-1 text-left">Step 1: Feature Extraction</span>
+                            <h3 class="serif-heading text-base font-bold text-[#0b132b] text-left">Vector Mapping</h3>
+                            <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-semibold text-left md:text-justify">
+                                The character string sequence is fed into an extraction matrix function. The simplest form maps the final trailing token character to an absolute vector boolean state index:
+                            </p>
+                            <div class="bg-white p-2.5 border rounded-lg font-mono text-center text-xs font-bold text-amber-950">
+                                Ending Token \(\in \{a, e, i, o, u\} \rightarrow 1\) (Vowel)<br>
+                                Ending Token \(\notin \{a, e, i, o, u\} \rightarrow 0\) (Consonant)
+                            </div>
+                        </div>
+
+                        <div class="p-4 border-2 border-amber-300 bg-amber-50/40 rounded-xl space-y-2 shadow-xs">
+                            <span class="text-[9px] font-mono font-black text-amber-900 uppercase tracking-widest block font-bold border-b border-amber-200 pb-1 text-left">Step 2: Weight Optimization</span>
+                            <h3 class="serif-heading text-base font-bold text-amber-950 text-left">Functional Convergence</h3>
+                            <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-semibold text-left md:text-justify">
+                                During the training phase, the algorithm sweeps across data inputs and cross-evaluates its classification error. It iteratively fits numeric weights until it maximizes standard predictive correctness boundaries.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-mathematical-formalism" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">4. Mathematical Formalism and Deep Dive</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 04</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-sm sm:text-base leading-relaxed font-semibold text-left md:text-justify">
+                        Let us formally represent the classification task as a mathematical function mapping. The global objective is to learn a stable classification hypothesis function:
+                    </p>
+
+                    <div class="bg-slate-100 p-4 rounded-xl border border-slate-300 text-center font-mono font-bold shadow-2xs overflow-x-auto">
+                        $$f: \mathcal{X} \rightarrow \mathcal{Y}$$
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-700 pl-4">
+                        Where \(\mathcal{X}\) represents the space of all valid name strings, and \(\mathcal{Y} = \{0, 1\}\) indicates the target gender class (\(0 \equiv \text{Male}\), \(1 \equiv \text{Female}\)).
+                    </p>
+
+                    <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-medium text-left md:text-justify">
+                        To compute this mapping numerically, the text string input sequence \(x \in \mathcal{X}\) is transformed via an evaluation feature extractor parameter \(\phi(x)\), tracking the trailing character property:
+                    </p>
+
+                    <div class="bg-slate-100 p-4 rounded-xl border border-slate-300 text-center font-mono font-bold shadow-2xs overflow-x-auto">
+                        $$\phi(x) = \begin{cases} 
+                        1, & \text{if } \text{last\_char}(x) \in \{a, e, i, o, u\} \\
+                        0, & \text{otherwise}
+                        \end{cases}$$
+                    </div>
+
+                    <div class="border border-slate-300 bg-slate-50 p-4 sm:p-6 rounded-xl space-y-4">
+                        <h3 class="serif-heading text-base sm:text-lg font-bold text-[#0b132b] border-b pb-2">Understanding the Probability Framework (Logistic Sigmoid)</h3>
+                        <p class="text-xs sm:text-sm text-slate-900 leading-relaxed text-left md:text-justify font-semibold">
+                            When predicting a binary outcome (like Female or Male), a standard straight line equation like \(z = w_1 \cdot \phi(x) + w_0\) is impractical because it can produce values anywhere from negative infinity to positive infinity. A computer needs a clean probability score bounded strictly between <strong>0% (0.0)</strong> and <strong>100% (1.0)</strong>. 
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-900 leading-relaxed text-left md:text-justify font-semibold">
+                            To achieve this, we wrap that linear value inside a mathematical compressor called the <strong>Logistic Sigmoid Function</strong>, denoted by \(\sigma(z)\):
+                        </p>
+                        <div class="bg-white p-4 rounded-lg border text-center font-mono font-bold overflow-x-auto my-2">
+                            $$P(y = 1 \mid x) = \sigma(z) = \frac{1}{1 + e^{-z}} = \frac{1}{1 + e^{-(w_1 \cdot \phi(x) + w_0)}}$$
+                        </div>
+                        
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700 mt-2">Layman Component Breakdown:</h4>
+                        <ul class="list-disc pl-5 text-xs sm:text-sm text-slate-800 space-y-1">
+                            <li><strong>\(P(y = 1 \mid x)\)</strong>: The probability that the given name (\(x\)) is Female (\(y=1\)).</li>
+                            <li><strong>\(w_1\) and \(w_0\)</strong>: Numeric settings ("weights" and "bias") that the machine adjusts automatically during learning.</li>
+                            <li><strong>\(e\)</strong>: Euler's constant (approx. \(2.718\)), a foundational mathematical constant used for continuous natural scaling.</li>
+                            <li><strong>The Threshold Rule</strong>: Once the formula squashes the score into a curve between 0 and 1, the machine applies a strict cutoff. If the output probability is \(\ge 0.5\), it predicts <strong>Female</strong>; otherwise, it predicts <strong>Male</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="border border-amber-300 bg-amber-50/30 p-4 sm:p-6 rounded-xl space-y-4">
+                        <h3 class="serif-heading text-base sm:text-lg font-bold text-amber-950 border-b border-amber-200 pb-2">How the Machine Self-Corrects: Binary Cross-Entropy Loss</h3>
+                        <p class="text-xs sm:text-sm text-slate-900 leading-relaxed text-left md:text-justify font-semibold">
+                            A machine doesn't automatically know the perfect values for \(w_1\) and \(w_0\). It starts with a random guess, checks its accuracy, and adjusts itself. To measure how wrong its guesses are, it uses an error-calculating metric called the <strong>Binary Cross-Entropy Loss Function</strong>:
+                        </p>
+                        <div class="bg-white p-4 rounded-lg border border-amber-200 text-center font-mono font-bold overflow-x-auto my-2">
+                            $$\mathcal{L}(w) = -\frac{1}{N} \sum_{i=1}^{N} \Big[ y_i \log\big(h_w(x_i)\big) + (1 - y_i) \log\big(1 - h_w(x_i)\big) \Big]$$
+                        </div>
+
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-amber-900 mt-2">Making Sense of the Math:</h4>
+                        <p class="text-xs sm:text-sm text-slate-900 leading-relaxed text-left md:text-justify font-semibold">
+                            Let \(y_i\) be the true label (\(1\) or \(0\)) and \(h_w(x_i)\) be the machine's predicted probability. The formula acts like a branching penalty box that isolates predictions case-by-case:
+                        </p>
+                        <ul class="list-disc pl-5 text-xs sm:text-sm text-slate-800 space-y-2">
+                            <li><strong>Case A: When the actual name is Female (\(y_i = 1\))</strong><br>
+                                The right half of the formula \((1 - 1)\) becomes zero, leaving only: \(- \log\big(h_w(x_i)\big)\). If the machine confidently guessed a 99% probability of being Female (\(0.99\)), the log of \(0.99\) is close to 0, meaning almost no penalty. But if it guessed a 1% probability (\(0.01\)), the penalty shoots up drastically toward infinity.
+                            </li>
+                            <li><strong>Case B: When the actual name is Male (\(y_i = 0\))</strong><br>
+                                The left half of the formula becomes zero, leaving only: \(- \log\big(1 - h_w(x_i)\big)\). This penalizes the model if its predicted score crawls away from \(0\).
+                            </li>
+                        </ul>
+                        <p class="text-xs sm:text-sm text-slate-900 font-bold bg-amber-100/60 p-2.5 rounded border border-amber-200">
+                            <strong>Summary:</strong> By calculating the average penalty across all \(N\) names using the summation symbol (\(\sum\)), the system uncovers a single absolute error value. The training phase is simply an optimization loop that minimizes this total error value down as close to zero as possible.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="section-algorithmic-flow" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">5. Operational Architecture: Algorithm & Flowchart</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 05</span>
+                    </h2>
+
+                    <div class="border-l-4 border-amber-500 bg-amber-50/40 p-4 sm:p-6 rounded-r-xl space-y-3">
+                        <h3 class="serif-heading text-base sm:text-lg font-bold text-amber-950 text-left">Mathematical Inference Algorithm</h3>
+                        <div class="font-mono text-sm sm:text-base text-slate-950 space-y-2 bg-white p-5 sm:p-6 border border-slate-300 rounded-xl shadow-sm leading-relaxed overflow-x-auto">
+                            <p class="font-bold text-slate-500 text-xs sm:text-sm border-b pb-1 mb-2">// HIGHLY READABLE PRODUCTION-READY PSEUDOCODE</p>
+                            <p><strong class="text-blue-800">Algorithm</strong> PredictGenderFromName(\(\text{String } \mathcal{N}\))</p>
+                            <p class="pl-4"><strong>Input:</strong> First Name string variable \(\mathcal{N}\)</p>
+                            <p class="pl-4"><strong>Output:</strong> Classified Class Identity Category \(\in \{\text{Male}, \text{Female}\}\)</p>
+                            <hr class="border-slate-200 my-2">
+                            <p class="pl-4"><strong>Begin:</strong></p>
+                            <p class="pl-8">\(\text{Length} \leftarrow \text{GetCharacterCount}(\mathcal{N})\)</p>
+                            <p class="pl-8">\(\mathcal{C}_{\text{last}} \leftarrow \text{ExtractCharacterAtIndex}(\mathcal{N}, \text{Length} - 1)\)</p>
+                            <p class="pl-8">\(\mathcal{C}_{\text{lower}} \leftarrow \text{ToLowerCase}(\mathcal{C}_{\text{last}})\)</p>
+                            <p class="font-bold text-slate-500 pl-8 my-1 text-xs sm:text-sm">// Evaluation against learned binary mapping criteria</p>
+                            <p class="pl-8"><strong class="text-indigo-800">If</strong> \(\mathcal{C}_{\text{lower}} \in \{'a', 'e', 'i', 'o', 'u'\}\) <strong class="text-indigo-800">Then</strong></p>
+                            <p class="pl-12 text-emerald-800 font-bold"><strong class="text-black">Return</strong> "Female"</p>
+                            <p class="pl-8"><strong class="text-indigo-800">Else</strong></p>
+                            <p class="pl-12 text-blue-800 font-bold"><strong class="text-black">Return</strong> "Male"</p>
+                            <p class="pl-4"><strong>End</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-sm sm:text-base font-extrabold text-[#0b132b] uppercase tracking-wide text-left">Functional Flowchart Map Architecture</h3>
+                        
+                        <div class="max-w-xl mx-auto bg-white border border-slate-300 rounded-xl p-6 sm:p-8 space-y-5 text-slate-900 font-bold text-center text-xs sm:text-sm">
+                            
+                            <div class="flex flex-col items-center">
+                                <div class="w-48 py-2 border-2 border-slate-900 rounded-full bg-white tracking-wider">
+                                    START
+                                </div>
+                                <div class="text-slate-400 font-black text-lg mt-2">&#x2193;</div>
+                            </div>
+
+                            <div class="flex flex-col items-center">
+                                <div class="w-64 p-3 border border-slate-400 bg-white shadow-2xs">
+                                    <span class="block text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">Input Sequence</span>
+                                    Read Name String (\(x\))
+                                </div>
+                                <div class="text-slate-400 font-black text-lg mt-2">&#x2193;</div>
+                            </div>
+
+                            <div class="flex flex-col items-center">
+                                <div class="w-64 p-3 border border-slate-400 bg-white shadow-2xs">
+                                    <span class="block text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">Feature Extraction</span>
+                                    $$\mathcal{C} = \text{last_char}(x)$$
+                                </div>
+                                <div class="text-slate-400 font-black text-lg mt-2">&#x2193;</div>
+                            </div>
+
+                            <div class="flex flex-col items-center">
+                                <div class="w-72 p-4 border-2 border-amber-500 bg-amber-50/30 rounded-lg">
+                                    <span class="block text-[10px] font-mono text-amber-800 uppercase tracking-widest font-black mb-1">Logical Boundary Condition</span>
+                                    Is character \(\mathcal{C} \in \{a, e, i, o, u\}\)?
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 pt-2">
+                                <div class="border border-slate-300 p-4 rounded-lg flex flex-col items-center">
+                                    <span class="text-[10px] font-mono font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 mb-2">IF TRUE (YES)</span>
+                                    <div class="w-full py-2 bg-slate-50 border border-slate-300">
+                                        Assign Prediction Label:<br>
+                                        <span class="text-emerald-700 font-black tracking-wider block mt-1">Female (\(y = 1\))</span>
+                                    </div>
+                                </div>
+
+                                <div class="border border-slate-300 p-4 rounded-lg flex flex-col items-center">
+                                    <span class="text-[10px] font-mono font-black text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200 mb-2">IF FALSE (NO)</span>
+                                    <div class="w-full py-2 bg-slate-50 border border-slate-300">
+                                        Assign Prediction Label:<br>
+                                        <span class="text-blue-700 font-black tracking-wider block mt-1">Male (\(y = 0\))</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col items-center pt-2">
+                                <div class="text-slate-400 font-black text-lg mb-2">&#x2193;</div>
+                                <div class="w-48 py-2 border-2 border-slate-900 rounded-full bg-white tracking-wider">
+                                    END
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div class="mt-4">
+                            
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-500 font-bold">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span>© 2026 Dr. Sivadasan Lecture Series. All Rights Reserved.</span>
+            <span>Vidya Academy of Science & Technology</span>
+        </div>
+    </footer>
+
+</body>
+</html>

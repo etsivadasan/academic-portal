@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 2.3: Input-Function-Output Foundations | VAST</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['$$', '$$']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght=700&family=Plus+Jakarta+Sans:wght=500;600;700;800&family=Fira+Code:wght=500;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        code { font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body class="text-slate-950 flex flex-col min-h-screen antialiased font-medium px-0 sm:px-2 md:px-4">
+
+    <div class="bg-[#0b132b] text-[#e0e1dd] text-[11px] sm:text-[13px] font-bold tracking-widest uppercase py-2.5 px-4 sm:px-6 border-b border-[#1c2541]">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+            <span>Vidya Academy of Science & Technology</span>
+            <span class="text-amber-500 font-bold">Faculty Portfolio</span>
+        </div>
+    </div>
+
+    <header class="bg-white border-b border-slate-300 sticky top-0 z-50 shadow-sm w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center space-x-2.5 shrink-0">
+                <div class="h-6 w-1.5 bg-[#0b132b] rounded-full"></div>
+                <span class="serif-heading text-base sm:text-lg md:text-xl font-bold tracking-wide text-[#0b132b] text-left">
+                    Dr. Sivadasan Portal
+                </span>
+            </a>
+            
+            <nav class="flex flex-wrap justify-center items-center gap-x-5 gap-y-2 text-[11px] sm:text-xs font-bold tracking-wide uppercase">
+                <a href="index.html" class="text-slate-900 hover:text-black border-b-2 border-transparent hover:border-slate-900 pb-0.5 whitespace-nowrap transition-colors">Home</a>
+                <a href="courses.html" class="text-[#0b132b] border-b-2 border-[#0b132b] pb-0.5 whitespace-nowrap">Knowledge Hub</a>
+                <a href="discussions.html" class="text-slate-900 hover:text-black border-b-2 border-transparent hover:border-slate-900 pb-0.5 whitespace-nowrap transition-colors">Discussion</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 md:py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start">
+            
+            <aside class="hidden lg:block lg:col-span-3 bg-white border border-slate-300 p-5 rounded-xl shadow-sm space-y-4 sticky top-24">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-slate-900">Lecture Roadmap</p>
+                    <a href="ds-ai-foundations" class="text-[11px] font-bold uppercase text-amber-800 hover:underline">← AI Foundations</a>
+                </div>
+                <nav class="space-y-1 text-xs font-bold uppercase tracking-wide">
+                    <a href="#section-core-triad" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition">1. The Core Triad</a>
+                    <a href="#section-case-1" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition">2. Case 1: Deductive Inference</a>
+                    <a href="#section-case-2" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition">3. Case 2: System Identification</a>
+                    <a href="#section-ml-mapping" class="block py-2.5 px-3 rounded-lg text-slate-900 hover:bg-slate-100 border-l-4 border-transparent transition">4. Mapping to ML Paradigms</a>
+                </nav>
+            </aside>
+
+            <div class="lg:col-span-9 space-y-6 md:space-y-8 w-full overflow-hidden">
+                
+                <section class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 right-0 h-2 bg-amber-500"></div>
+                    <span class="text-[10px] sm:text-[11px] font-mono uppercase text-amber-800 tracking-widest font-extrabold block mb-1 text-left">Lecture Sheet 1.2</span>
+                    <h1 class="serif-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#0b132b] tracking-tight text-left">Mathematical Core of Computation: Input, Function, and Output Relationships</h1>
+                </section>
+
+                <section id="section-core-triad" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">1. Anatomy of the Computational Triad</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 01</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-sm sm:text-base leading-relaxed font-semibold text-left md:text-justify">
+                        Before approaching algorithmic formalisms like Supervised or Reinforcement learning, computation must be stripped down to its mathematical scaffolding. Every computational entity is an interplay between three pillars:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-bold text-xs sm:text-sm">
+                        <div class="p-4 border border-slate-300 rounded-lg bg-white">
+                            <h3 class="text-slate-900 uppercase font-mono tracking-wider text-[11px] border-b pb-1 mb-2">I. The Input (\(X\))</h3>
+                            <p class="font-medium text-slate-700">The measured vector variable space or environmental raw state. In mathematical mappings, it represents individual points drawn from an independent domain space matrix \(\mathcal{X}\).</p>
+                        </div>
+                        <div class="p-4 border border-slate-300 rounded-lg bg-white">
+                            <h3 class="text-amber-800 uppercase font-mono tracking-wider text-[11px] border-b pb-1 mb-2">II. The Function (\(f\))</h3>
+                            <p class="font-medium text-slate-700">The deterministic structure, operator matrix, or mapping rule system. It dictates exactly how input states are processed, shifted, or projected into dependent vector bounds.</p>
+                        </div>
+                        <div class="p-4 border border-slate-300 rounded-lg bg-white">
+                            <h3 class="text-slate-900 uppercase font-mono tracking-wider text-[11px] border-b pb-1 mb-2">III. The Output (\(Y\))</h3>
+                            <p class="font-medium text-slate-700">The dependent variable result, class label category, or system transformation target. It occupies the codomain range target space \(\mathcal{Y}\).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section-case-1" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">2. Case 1: Deductive Computation (Forward Execution)</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 02</span>
+                    </h2>
+
+                    <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-semibold text-left md:text-justify">
+                        In classic software engineering, standard algorithmic computation solves for the unknown variable Output (\(Y\)) given a known Input (\(X\)) and a fully transparent, explicit, predefined Function (\(f\)).
+                    </p>
+
+                    <div class="max-w-md mx-auto bg-white border border-slate-300 p-4 rounded-xl text-center font-bold text-xs sm:text-sm">
+                        <span class="block text-[9px] font-mono text-slate-400 uppercase tracking-widest mb-3">Forward Execution Architecture</span>
+                        <div class="flex items-center justify-between border border-slate-200 p-3 bg-slate-50">
+                            <div class="p-2 border border-slate-400 bg-white w-24">Input (\(X\))</div>
+                            <div class="text-slate-400 font-black">&rarr;</div>
+                            <div class="p-2 border-2 border-slate-900 bg-white font-mono text-xs w-32">
+                                Known Rule Function<br>
+                                \(f(X)\)
+                            </div>
+                            <div class="text-slate-400 font-black">&rarr;</div>
+                            <div class="p-2 border border-slate-400 bg-slate-900 text-white w-24 shadow-xs">Output (\(Y\))</div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="serif-heading text-base font-bold text-[#0b132b]">Mathematical Formalism & Formulation</h3>
+                        <p class="text-slate-900 text-xs sm:text-sm font-medium">
+                            If the mapping rule is known explicitly as an algebraic matrix expression, computation reduces to basic forward evaluation:
+                        </p>
+                        <div class="bg-slate-100 p-4 rounded-lg border text-center font-mono font-bold overflow-x-auto">
+                            $$Y = f(X)$$
+                        </div>
+                        <p class="text-slate-900 text-xs sm:text-sm font-medium">
+                            For a multi-feature system where the function maps a weight vector transposed across inputs plus a bias parameter, computing the result takes the following form:
+                        </p>
+                        <div class="bg-slate-100 p-4 rounded-lg border text-center font-mono font-bold overflow-x-auto">
+                            $$Y = \mathbf{W}^T X + b$$
+                        </div>
+                    </div>
+
+                    <div class="p-4 border-l-4 border-slate-900 bg-slate-50 font-medium text-xs sm:text-sm text-slate-900 space-y-2">
+                        <span class="block text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold">Concrete Engineering Example</span>
+                        <p><strong>Scenario:</strong> Calculating a student's final marks based on a predefined absolute weight criteria rule.</p>
+                        <ul class="list-disc pl-5 space-y-1 font-semibold text-slate-800">
+                            <li><strong>Input Vector components:</strong> Exam marks \(x_1 = 85\), Assignment marks \(x_2 = 90\).</li>
+                            <li><strong>Known Transformation Function:</strong> \(f(x_1, x_2) = 0.70x_1 + 0.30x_2\)</li>
+                            <li><strong>Computed Output Scalar:</strong> \(Y = 0.70(85) + 0.30(90) = 59.5 + 27.0 = 86.5\)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="section-case-2" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">3. Case 2: Inductive Computation (System Identification)</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 03</span>
+                    </h2>
+
+                    <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-semibold text-left md:text-justify">
+                        In modern Artificial Intelligence and empirical modeling, we observe the environmental reactions <span class="whitespace-nowrap">(Input, \(X\))</span> and match them against recorded targets <span class="whitespace-nowrap">(Output, \(Y\))</span>. The inner structural transformation rule—the <span class="whitespace-nowrap">Function (\(f\))</span>—remains completely hidden inside a black box. Our task is to reverse-engineer it via System Identification.
+                    </p>
+
+                    <div class="max-w-md mx-auto bg-white border border-slate-300 p-4 rounded-xl text-center font-bold text-xs sm:text-sm">
+                        <span class="block text-[9px] font-mono text-slate-400 uppercase tracking-widest mb-3">System/Function Identification Architecture</span>
+                        <div class="flex items-center justify-between border border-slate-200 p-3 bg-slate-50">
+                            <div class="p-2 border border-slate-400 bg-white w-auto whitespace-nowrap">Input (\(X\))</div>
+                            <div class="text-slate-400 font-black">&rarr;</div>
+                            <div class="p-2 border-2 border-amber-500 bg-amber-50/20 font-mono text-xs w-36 text-amber-950">
+                                Hidden Unknown Black-Box System Matrix
+                            </div>
+                            <div class="text-slate-400 font-black">&rarr;</div>
+                            <div class="p-2 border border-slate-400 bg-white w-auto whitespace-nowrap">Output (\(Y\))</div>
+                        </div>
+                        <div class="text-slate-400 font-black text-lg my-1">&#x2193;</div>
+                        <div class="p-2 border-2 border-slate-900 bg-slate-950 text-white rounded font-mono max-w-xs mx-auto text-xs">
+                            Goal: Derive Function Rule Estimate (\(\hat{f}\))
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="serif-heading text-base font-bold text-[#0b132b]">Mathematical Reverse-Engineering Formulation</h3>
+                        <p class="text-slate-900 text-xs sm:text-sm font-medium">
+                            Because an infinite number of equations could technically satisfy a single coordinate mapping, we collect a dense historical observation matrix repository \(\mathcal{D}\) matching inputs to targets:
+                        </p>
+                        <div class="bg-slate-100 p-4 rounded-lg border text-center font-mono font-bold overflow-x-auto">
+                            $$\mathcal{D} = \left\{ (x_1, y_1), (x_2, y_2), \dots, (x_N, y_N) \right\} \subset \mathcal{X} \times \mathcal{Y}$$
+                        </div>
+                        <p class="text-slate-900 text-xs sm:text-sm font-medium">
+                            We configure an optimization engine to search within a defined hypothesis space framework \(\mathcal{H}\) to discover an optimized functional representation setting \(\hat{f}\) that minimizes total empirical loss:
+                        </p>
+                        <div class="bg-slate-100 p-4 rounded-lg border text-center font-mono font-bold overflow-x-auto">
+                            $$\hat{f} = \arg\min_{f \in \mathcal{H}} \frac{1}{N}\sum_{i=1}^{N} \mathcal{L}\Big( y_i, f(x_i) \Big)$$
+                        </div>
+                    </div>
+
+                    <div class="p-4 border-l-4 border-amber-500 bg-amber-50/20 font-medium text-xs sm:text-sm text-slate-900 space-y-2">
+                        <span class="block text-[10px] font-mono uppercase tracking-wider text-amber-800 font-bold">Concrete Reverse-Engineering Example</span>
+                        <p><strong>Scenario:</strong> Discovering the linear degradation property of an engineering system under stress over time.</p>
+                        <ul class="list-disc pl-5 space-y-1 font-semibold text-slate-800">
+                            <li><strong>Sample Inputs Observed:</strong> Run hours \(x \in \{100, 200, 300, 400\}\).</li>
+                            <li><strong>Sample Target Outputs Recorded:</strong> Efficiency measures \(y \in \{95\%, 90\%, 85\%, 80\%\} \equiv \{0.95, 0.90, 0.85, 0.80\}\).</li>
+                            <li><strong>Identified System Function:</strong> The training loop minimizes the residual squared error to isolate the uniform rate parameters, yielding: \(\hat{f}(x) = 1.00 - 0.0005x\).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="section-ml-mapping" class="bg-white border border-slate-300 p-5 sm:p-6 md:p-8 rounded-xl shadow-sm space-y-6">
+                    <h2 class="serif-heading text-xl sm:text-2xl font-bold text-[#0b132b] border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <span class="text-left">4. Scaffolding Foundations for Core Machine Learning Paradigms</span>
+                        <span class="text-[10px] font-mono text-slate-900 font-bold block bg-slate-100 px-2 py-0.5 rounded shrink-0">Sec. 04</span>
+                    </h2>
+                    
+                    <p class="text-slate-950 text-xs sm:text-sm leading-relaxed font-semibold text-left md:text-justify">
+                        This structural core directly dictates the fundamental operational behavior of the upcoming core machine learning algorithm families:
+                    </p>
+
+                    <div class="overflow-x-auto border border-slate-300 rounded-xl shadow-xs bg-white">
+                        <table class="w-full text-left border-collapse text-xs sm:text-sm min-w-[650px]">
+                            <thead>
+                                <tr class="bg-slate-900 text-white font-black uppercase text-[10px] tracking-wider border-b border-slate-300">
+                                    <th class="p-3 border-r border-slate-700">Algorithm Family Class</th>
+                                    <th class="p-3 border-r border-slate-700">Input Condition Vector (\(X\))</th>
+                                    <th class="p-3 border-r border-slate-700">Target Output Class (\(Y\))</th>
+                                    <th class="p-3">The Learning Task Strategy (\(f\))</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 font-bold text-slate-900">
+                                <tr>
+                                    <td class="p-3 border-r border-slate-200 bg-slate-50 font-extrabold">Supervised Learning</td>
+                                    <td class="p-3 border-r border-slate-200 text-slate-700">Fully Known Data Points</td>
+                                    <td class="p-3 border-r border-slate-200 text-emerald-800">Fully Provided Labeled Target Ground-Truth</td>
+                                    <td class="p-3 text-slate-800 font-medium">Direct structural approximation of \(Y = f(X)\) using optimization cost functions.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border-r border-slate-200 bg-slate-50 font-extrabold">Self-Supervised Learning</td>
+                                    <td class="p-3 border-r border-slate-200 text-slate-700">Unlabeled Raw Input Stream <span class="whitespace-nowrap">(\(X_{raw}\))</span></td>
+                                    <td class="p-3 border-r border-slate-200 text-amber-700">Self-Generated Fake Targets <span class="whitespace-nowrap">(\(X_{masked}\) or \(X_{next}\))</span></td>
+                                    <td class="p-3 text-slate-800 font-medium">The system automatically splits or hides parts of the input to create an internal artificial target. It tracks \(f(X_{visible}) = X_{hidden}\) (e.g., predicting the next word in a text line) to build deep baseline context mappings without manual human labels.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border-r border-slate-200 bg-slate-50 font-extrabold">Unsupervised Learning</td>
+                                    <td class="p-3 border-r border-slate-200 text-slate-700">Fully Known Data Points</td>
+                                    <td class="p-3 border-r border-slate-200 text-red-800">Completely Missing / Not Provided</td>
+                                    <td class="p-3 text-slate-800 font-medium">Derives latent structural hidden groups or sorting relations directly from geometric vector patterns.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border-r border-slate-200 bg-slate-50 font-extrabold">Reinforcement Learning</td>
+                                    <td class="p-3 border-r border-slate-200 text-slate-700">Environmental State Observations</td>
+                                    <td class="p-3 border-r border-slate-200 text-blue-800">Delayed Reward Signal Responses</td>
+                                    <td class="p-3 text-slate-800 font-medium">Optimizes a policy trajectory mapping matrix through iterative interactive feedback trials.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6 text-center text-xs text-slate-500 font-bold">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span>© 2026 Dr. Sivadasan Lecture Series. All Rights Reserved.</span>
+            <span>Vidya Academy of Science & Technology</span>
+        </div>
+    </footer>
+
+</body>
+</html>
