@@ -4,42 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discussions | VAST Faculty Portal</title>
+    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .justified { text-align: justify; text-justify: inter-word; }
+        
+        /* Ensures the comments container blends perfectly with our design */
+        .utterances {
+            max-width: 100% !important;
+            margin-top: 1.5rem;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body class="text-slate-900 flex flex-col min-h-screen antialiased">
 
-    <!-- Navigation -->
-    <nav class="bg-indigo-900 text-white shadow-md">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-wide">VAST Faculty Portal</a>
-            <div class="space-x-6">
-                <a href="index.html" class="hover:text-indigo-200 transition font-medium">Home & Profile</a>
-                <a href="courses.html" class="hover:text-indigo-200 transition font-medium">Courses</a>
-                <a href="discussions.html" class="text-indigo-200 font-bold border-b-2 border-indigo-200">Discussions</a>
-            </div>
+    <!-- Top Institutional Bar -->
+    <div class="bg-[#0b132b] text-[#e0e1dd] text-[11px] font-semibold tracking-widest uppercase py-1.5 px-6 border-b border-[#1c2541]">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <span>Vidya Academy of Science & Technology</span>
+            <span class="text-amber-500 font-medium">Faculty Portfolio</span>
         </div>
-    </nav>
+    </div>
 
-    <!-- Discussion Hub Main Content -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-12">
-        <div class="bg-white p-8 rounded-xl shadow-md border border-gray-200">
-            <h1 class="text-3xl font-bold text-indigo-900 mb-4">Discussions</h1>
-            <p class="text-gray-600 mb-8">Welcome to the discussion area. Here, we can explore concepts, share insights, and clarify doubts regarding Artificial Intelligence foundations. Please sign in with your GitHub account to join the conversation.</p>
+    <!-- Navigation Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
+        <div class="max-w-5xl mx-auto px-6 py-3.5 flex justify-between items-center">
+            <a href="https://prof-sivadasan-portal.etsivadasan.workers.dev/index.html" class="flex items-center space-x-2.5">
+                <div class="h-6 w-1 bg-[#0b132b] rounded-full"></div>
+                <span class="serif-heading text-lg font-bold tracking-wide text-[#0b132b]">
+                    Dr. Sivadasan Portal
+                </span>
+            </a>
+            <nav class="flex space-x-6 text-xs font-bold tracking-wide uppercase">
+                <a href="https://prof-sivadasan-portal.etsivadasan.workers.dev/index.html" class="text-slate-500 hover:text-[#0b132b] transition">Home</a>
+                <a href="https://prof-sivadasan-portal.etsivadasan.workers.dev/courses.html" class="text-slate-500 hover:text-[#0b132b] transition">Knowledge Hub</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Editorial Content Container -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-6">
+        <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs relative overflow-hidden">
+            <div class="absolute top-0 left-0 right-0 h-1 bg-[#0b132b]"></div>
             
-            <!-- Utterances Discussion Component -->
-            <script src="https://utteranc.es/client.js"
-                    repo="etsivadasan/academic-portal" 
-                    issue-term="your-username.github.io/academic-portal/discussions.html ."
-                    theme="github-light"
-                    crossorigin="anonymous"
-                    async>
-            </script>
+            <!-- Section Header -->
+            <h1 class="serif-heading text-xl font-bold text-[#0b132b] mb-3 border-b border-slate-100 pb-1.5 flex justify-between items-center">
+                <span>Discussion Hub</span>
+                <span class="text-[10px] font-mono uppercase text-slate-400 tracking-widest">Interactive Forum</span>
+            </h1>
+            
+            <!-- Description Box -->
+            <p class="text-slate-600 text-sm leading-relaxed mb-6 justified">
+                Welcome to the discussion area. Here, we can explore concepts, share insights, and clarify doubts regarding Artificial Intelligence foundations. Please sign in with your GitHub account to join the conversation.
+            </p>
+            
+            <!-- Separator Line -->
+            <div class="w-full border-t border-slate-100 my-4"></div>
+            
+            <!-- Utterances Discussion Component Container -->
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-100/80 min-h-[200px]">
+                <script src="https://utteranc.es/client.js"
+                        repo="etsivadasan/academic-portal" 
+                        issue-term="your-username.github.io/academic-portal/discussions.html ."
+                        theme="github-light"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 text-center py-6 border-t border-gray-700 mt-12">
-        <p>© 2026 Vidya Academy of Science and Technology, Thrissur. All Rights Reserved.</p>
+    <!-- Institutional Footer Panel -->
+    <footer class="bg-[#0b132b] text-slate-400 text-[11px] tracking-wide py-5 border-t border-slate-800 mt-auto">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2">
+            <p>&copy; 2026 Vidya Academy of Science and Technology. All Rights Reserved.</p>
+            <p class="text-[9px] text-slate-500 font-mono uppercase tracking-widest">Internal Ledger Sync: Verified</p>
+        </div>
     </footer>
 
 </body>
