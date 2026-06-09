@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discussions | VAST Faculty Portal</title>
-    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght=600;700&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap');
@@ -19,29 +18,32 @@
         .serif-heading {
             font-family: 'Playfair Display', serif;
         }
-        .justified { text-align: justify; text-justify: inter-word; }
         
+        /* Fixed responsive container for Utterances to prevent overlapping elements */
+        .forum-comment-wrapper {
+            width: 100% !important;
+            display: block;
+            overflow: hidden;
+        }
         .utterances {
             max-width: 100% !important;
-            margin-top: 1.5rem;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
     </style>
 </head>
-<body class="text-slate-900 flex flex-col min-h-screen antialiased">
+<body class="text-slate-900 flex flex-col min-h-screen antialiased px-0 sm:px-2">
 
-    <!-- Top Institutional Bar -->
-    <div class="bg-[#0b132b] text-[#e0e1dd] text-[12px] font-semibold tracking-widest uppercase py-2 px-6 border-b border-[#1c2541]">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
+    <div class="bg-[#0b132b] text-[#e0e1dd] text-[12px] font-semibold tracking-widest uppercase py-2.5 px-4 sm:px-6 border-b border-[#1c2541]">
+        <div class="max-w-5xl mx-auto flex justify-between items-center text-xs">
             <span>Vidya Academy of Science & Technology</span>
-            <span class="text-amber-500 font-medium">Faculty Portfolio</span>
+            <span class="text-amber-500 font-medium hidden sm:inline">Faculty Portfolio</span>
         </div>
     </div>
 
-    <!-- Navigation Header -->
-    <!-- Navigation Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <!-- Branding Area -->
             <a href="index.html" class="flex items-center space-x-2.5 shrink-0">
                 <div class="h-5 w-1 bg-[#0b132b] rounded-full"></div>
                 <span class="serif-heading text-base sm:text-lg font-bold tracking-wide text-[#0b132b] text-left">
@@ -49,7 +51,6 @@
                 </span>
             </a>
             
-            <!-- Safe, Wrap-Ready Navigation Links -->
             <nav class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-[11px] sm:text-xs font-bold tracking-wide uppercase">
                 <a href="index.html" class="text-slate-500 hover:text-[#0b132b] transition whitespace-nowrap">Home</a>
                 <a href="courses.html" class="text-slate-500 hover:text-[#0b132b] transition whitespace-nowrap">Knowledge Hub</a>
@@ -58,64 +59,59 @@
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-6">
-        <div class="bg-white border border-slate-200 p-6 rounded-xl shadow-xs relative overflow-hidden">
+    <main class="flex-grow max-w-5xl w-full mx-auto px-3 sm:px-6 py-6">
+        <div class="bg-white border border-slate-200 p-4 sm:p-6 rounded-xl shadow-xs relative overflow-hidden">
             <div class="absolute top-0 left-0 right-0 h-1 bg-[#0b132b]"></div>
             
-            <!-- Section Header -->
             <h1 class="serif-heading text-xl font-bold text-[#0b132b] mb-3 border-b border-slate-100 pb-1.5 flex justify-between items-center">
                 <span>Discussion Hub</span>
-                <span class="text-[10px] font-mono uppercase text-slate-400 tracking-widest">Interactive Forum</span>
+                <span class="text-[10px] font-mono uppercase text-slate-400 tracking-widest hidden sm:inline">Interactive Forum</span>
             </h1>
             
-            <!-- Description Box -->
-            <p class="text-slate-600 text-sm leading-relaxed mb-6 justified">
+            <p class="text-slate-600 text-sm leading-relaxed mb-6 text-left sm:text-justify">
                 Welcome to the discussion area. Here, we can explore technical paradigms, share unique insights, and clarify algorithmic doubts regarding Data Science structures and Artificial Intelligence Foundations. Please log in with your GitHub account to contribute.
             </p>
             
             <div class="w-full border-t border-slate-100 my-4"></div>
             
-            <!-- Discussion Threads Setup -->
             <div class="space-y-6">
                 
-                <!-- Thread Section for Course 1: Data Science & AI Foundations -->
-                <section id="data-science-thread" class="bg-white p-5 rounded-xl border border-slate-200 scroll-mt-20 shadow-2xs">
-                    <h2 class="serif-heading text-base font-bold text-[#0b132b] border-b border-slate-100 pb-2">Data Science & AI Foundations Discussion</h2>
-                    <p class="text-slate-600 text-sm mt-3 mb-4">Share your thoughts, computational questions, and insights about Data Science analytics and AI algorithms.</p>
+                <section id="data-science-thread" class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 scroll-mt-20 shadow-2xs overflow-hidden">
+                    <h2 class="serif-heading text-base font-bold text-[#0b132b] border-b border-slate-100 pb-2 text-left">Data Science & AI Foundations Discussion</h2>
+                    <p class="text-slate-600 text-sm mt-3 mb-4 text-left">Share your thoughts, computational questions, and insights about Data Science analytics and AI algorithms.</p>
                     
-                    <!-- UTTERANCES COMMENT ENGINE CONFIGURATION -->
-                    <script src="https://utteranc.es/client.js"
-                            repo="etsivadasan/academic-portal"
-                            issue-term="data-science-ai-discussion"
-                            theme="github-light"
-                            crossorigin="anonymous"
-                            async>
-                    </script>
+                    <div class="forum-comment-wrapper px-1">
+                        <script src="https://utteranc.es/client.js"
+                                repo="etsivadasan/academic-portal"
+                                issue-term="data-science-ai-discussion"
+                                theme="github-light"
+                                crossorigin="anonymous"
+                                async>
+                        </script>
+                    </div>
                 </section>
 
-                <!-- Thread Section for Course 2: Deep Learning -->
-                <section id="deep-learning-thread" class="bg-white p-5 rounded-xl border border-slate-200 scroll-mt-20 shadow-2xs">
-                    <h2 class="serif-heading text-base font-bold text-[#0b132b] border-b border-slate-100 pb-2">Deep Learning Discussion</h2>
-                    <p class="text-slate-600 text-sm mt-3 mb-4">Discuss Deep Learning engineering models, neural topologies, and loss configurations in this space.</p>
+                <section id="deep-learning-thread" class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 scroll-mt-20 shadow-2xs overflow-hidden">
+                    <h2 class="serif-heading text-base font-bold text-[#0b132b] border-b border-slate-100 pb-2 text-left">Deep Learning Discussion</h2>
+                    <p class="text-slate-600 text-sm mt-3 mb-4 text-left">Discuss Deep Learning engineering models, neural topologies, and loss configurations in this space.</p>
                     
-                    <!-- UTTERANCES COMMENT ENGINE CONFIGURATION -->
-                    <script src="https://utteranc.es/client.js"
-                            repo="Yetsivadasan/academic-portal"
-                            issue-term="deep-learning-discussion"
-                            theme="github-light"
-                            crossorigin="anonymous"
-                            async>
-                    </script>
+                    <div class="forum-comment-wrapper px-1">
+                        <script src="https://utteranc.es/client.js"
+                                repo="etsivadasan/academic-portal"
+                                issue-term="deep-learning-discussion"
+                                theme="github-light"
+                                crossorigin="anonymous"
+                                async>
+                        </script>
+                    </div>
                 </section>
                 
             </div>
         </div>
     </main>
 
-    <!-- Institutional Footer Panel -->
     <footer class="bg-[#0b132b] text-slate-400 text-[12px] tracking-wide py-5 border-t border-slate-800 mt-auto">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
             <p>&copy; 2026 Vidya Academy of Science and Technology. All Rights Reserved.</p>
             <p class="text-[10px] text-slate-500 font-mono uppercase tracking-widest">Internal Ledger Sync: Verified</p>
         </div>
